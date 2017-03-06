@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<link rel="stylesheet" type="text/css" href="../css/classification.css">
+	<link rel="stylesheet" type="text/css" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<title>生活娱乐</title>
+	
+</head>
+<body>
+	<div class="head">
+		<a class="head-return" style="color:#999;text-decoration:none;" href="../index.html"><</a>
+		<span class="title">生活娱乐</span>
+	</div>
+	<div class="banner">
+		<div class="banner-center">
+			<div class="banner-container">
+				<a id="banner-sale" href="#" onclick="sale()">我想卖</a>
+				<a id="banner-buy" href="#" onclick="buy()">我想买</a>
+			</div>
+		</div>
+	</div>
+	<div id="main-sale" class="container">
+		<a class="goods-list main-left col-xs-6" style="padding:0;text-decoration:none;" href="#">
+			<img class="center-block img-responsive" src="../MockData/images/相机.png">
+			<ul class="goods-detial">
+				<li class="goods-name">商品名称</li>
+				<li class="goods-price">5000元</li>
+			</ul>
+		</a>
+		<a class="goods-list main-right col-xs-6" style="padding:0;text-decoration:none;" href="#">
+			<img class="center-block img-responsive" src="../MockData/images/相机.png">
+			<ul class="goods-detial">
+				<li class="goods-name">商品名称</li>
+				<li class="goods-price">5000元</li>
+			</ul>
+		</a>
+		<a class="goods-list main-left col-xs-6" style="padding:0;text-decoration:none;" href="#">
+			<img class="center-block img-responsive" src="../MockData/images/相机.png">
+			<ul class="goods-detial">
+				<li class="goods-name">商品名称</li>
+				<li class="goods-price">5000元</li>
+			</ul>
+		</a>
+		<a class="goods-list main-right col-xs-6" style="padding:0;text-decoration:none;" href="#">
+			<img class="center-block img-responsive" src="../MockData/images/相机.png">
+			<ul class="goods-detial">
+				<li class="goods-name">商品名称</li>
+				<li class="goods-price">5000元</li>
+			</ul>
+		</a>
+		<a class="goods-list main-left col-xs-6" style="padding:0;text-decoration:none;" href="#">
+			<img class="center-block img-responsive" src="../MockData/images/相机.png">
+			<ul class="goods-detial">
+				<li class="goods-name">商品名称</li>
+				<li class="goods-price">5000元</li>
+			</ul>
+		</a>
+		<a class="goods-list main-right col-xs-6" style="padding:0;text-decoration:none;" href="#">
+			<img class="center-block img-responsive" src="../MockData/images/相机.png">
+			<ul class="goods-detial">
+				<li class="goods-name">商品名称</li>
+				<li class="goods-price">5000元</li>
+			</ul>
+		</a>
+	</div>
+	<div id="main-buy" class="container">
+		<a class="goods-list main-left col-xs-6" style="padding:0;text-decoration:none;" href="#">
+			<img class="center-block img-responsive" src="../MockData/images/相机.png">
+			<ul class="goods-detial">
+				<li class="goods-name">商品名称</li>
+				<li class="goods-price">5000元</li>
+			</ul>
+		</a>
+		<a class="goods-list main-right col-xs-6" style="padding:0;text-decoration:none;" href="#">
+			<img class="center-block img-responsive" src="../MockData/images/相机.png">
+			<ul class="goods-detial">
+				<li class="goods-name">商品名称</li>
+				<li class="goods-price">5000元</li>
+			</ul>
+		</a>
+		<a class="goods-list main-left col-xs-6" style="padding:0;text-decoration:none;" href="#">
+			<img class="center-block img-responsive" src="../MockData/images/相机.png">
+			<ul class="goods-detial">
+				<li class="goods-name">商品名称</li>
+				<li class="goods-price">5000元</li>
+			</ul>
+		</a>
+		<a class="goods-list main-right col-xs-6" style="padding:0;text-decoration:none;" href="#">
+			<img class="center-block img-responsive" src="../MockData/images/相机.png">
+			<ul class="goods-detial">
+				<li class="goods-name">商品名称</li>
+				<li class="goods-price">5000元</li>
+			</ul>
+		</a>
+		<a class="goods-list main-left col-xs-6" style="padding:0;text-decoration:none;" href="#">
+			<img class="center-block img-responsive" src="../MockData/images/相机.png">
+			<ul class="goods-detial">
+				<li class="goods-name">商品名称</li>
+				<li class="goods-price">5000元</li>
+			</ul>
+		</a>
+		
+	</div>
+	<script type="text/javascript" src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	function buy(){
+		$("#banner-buy").css({"color":"#f4cf48",
+							  "border-bottom":"2px solid #f4cf48",
+							});
+		$("#banner-sale").css({"color":"#999",
+							   "border-bottom":"none",
+							});
+		$("#main-buy").css("display","block");
+		$("#main-sale").css("display","none");
+		
+	}
+	function sale(){
+		$("#banner-sale").css({"color":"#f4cf48",
+							  "border-bottom":"2px solid #f4cf48",
+							});
+		$("#banner-buy").css({"color":"#999",
+							   "border-bottom":"none",
+							});
+		$("#main-sale").css("display","block");
+		$("#main-buy").css("display","none");
+	}
+	</script>
+</body>
+</html>

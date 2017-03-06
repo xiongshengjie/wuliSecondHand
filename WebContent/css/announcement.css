@@ -1,0 +1,63 @@
+body{
+            margin:0;
+            padding:0;
+            font-family: "Microsoft YaHei UI";
+            background: #eee;
+        }
+        .fir-box{
+            height: 40px;
+            text-align: center;
+            border-bottom: solid 1px #999;
+            background: #fff;
+            overflow: hidden;
+        }
+        .return-arr:link,
+        .return-arr:visited{
+            text-decoration: none;
+            color:#999;
+        }
+        .return-arr{
+            float: left;
+            padding-left:4%;
+            font-family: SimSun;
+            font-weight: 900;
+            font-size: 30px;
+            line-height:40px;
+        }
+        .title{
+            display: inline-block;
+            font-size: 18px;
+            line-height:40px;
+            color: #666;
+        }
+        .sec-box{
+            margin-top: 10px;
+            background: #fff;
+        }
+        .anno-list:link,
+        .anno-list:visited{
+            text-decoration: none;
+            color:#333;
+        }
+        .anno-list{
+            display: inline-block;
+            height:42px;
+            width:100%;
+            border:solid 1px #ccc;
+        }
+        .anno-text{
+            height: 42px;
+            padding-left: 4%;
+            font-size:14px;
+            line-height: 42px;
+        }
+        .right-arr{
+            float: right;
+            height:38px;
+            padding-right: 4%;
+            font-family: SimSun;
+            font-weight: 900;
+            font-size: 20px;
+            color: #999;
+            line-height:42px;
+        }

@@ -1,0 +1,33 @@
+/*base css*/
+
+/*init css*/
+/*Remove default margin*/
+body {
+  height: 100%;
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+  background: #fff;
+}
+
+/*HTML5 display definitions*/
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/*search input style*/
+.search-bar {
+
+}

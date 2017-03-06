@@ -1,0 +1,124 @@
+body{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: Microsoft yahei;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+.head{
+	position: relative;
+	width: 100%;
+	height: 64px;
+	text-align: center;
+	border-bottom:1px solid #999; 
+	background-color: #x;
+	font-size: 17px;
+	color: #666;
+}
+.head-return{
+	position: absolute;
+	left: 10px; 
+	bottom: 10px;
+	font-size: 17px;
+}
+.search-box{
+	position: absolute;
+	left: 30px;
+	bottom:10px;
+	width: 78%;
+	height: 23px;
+	border-radius: 3px;
+	background-color: #fff;
+}
+.search-button{
+	float: left;
+	width: 17px;
+	height: 17px;
+	margin: 3px;
+	border:none;
+	background:url(../MockData/images/放大镜.png)no-repeat;
+}
+.search-input{
+	float: left;
+	width: 85%;
+	height: 23px;
+	border:none;
+	font-size: 14px;
+	color: #666;
+}
+.search-cancel{
+	display: none;
+	position: absolute;
+	bottom: 10px;
+	right: 5px;
+	font-size: 14px;
+	color: #999;
+}
+.banner{
+	width: 100%;
+	height: 35px;
+	border-bottom: 1px solid #bdbdc0;
+	background-color: #fff;
+}
+.banner-center{
+	width: 150px;
+	height: 35px;
+	margin: 0 auto;
+}
+.banner-container{
+	position: absolute;
+	width: 150px;
+	height: 35px;
+}
+#banner-sale{
+	position: absolute;
+	bottom: 0;
+	width: 70px;
+	height: 33px;
+	line-height: 33px;
+	text-align: center;
+	text-decoration: none;
+	border-bottom: 2px solid #f4cf48;
+	font-size: 14px;
+	color: #f4ce49;
+}
+#banner-buy{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 70px;
+	height: 33px;
+	line-height: 33px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 14px;
+	color: #999;
+}
+.main{
+	height: 100%;
+	padding-top: 95px;
+	background-color: #eee;
+}
+.main-pic{
+	width: 119px;
+	height: 117px;
+}
+.main-text{
+	width: 200px;
+	margin-top: 50px;
+	font-size: 14px;
+	color:#999;
+}
+.bottom{
+	height: 1px;
+	position: absolute;
+	bottom: 0;
+}

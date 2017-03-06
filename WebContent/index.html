@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <link rel="stylesheet" type="text/css" href="./css/index.css">
+  <!-- swiper-3.3.1.min.css -->
+  <link rel="stylesheet" type="text/css" href="./css/swiper-3.4.1.min.css">
+  <link rel="stylesheet" type="text/css" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>首页</title>
+</head>
+<body style="background-color:#eee;">
+<div class="head">
+  <form class="search-box">
+    <button class="search-button"></button>
+    <input id="input" placeholder="搜索一下" class="search-input" onclick="showCancel()"/>
+  </form>
+  <span id="cancel" class="search-cancel" onclick="cancel()">取消</span>
+</div>
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <a class="adlink1" href="#">
+        <img class="adpic1" src="MockData/images/ad1.jpg" width="100%" height="180" alt="无法显示">
+      </a>
+    </div>
+    <div class="swiper-slide">
+      <a class="adlink2" href="#">
+        <img class="adpic2" src="MockData/images/ad2.jpg" width="100%" height="180" alt="无法显示">
+      </a>
+    </div>
+    <div class="swiper-slide">
+      <a class="adlink3" href="#">
+        <img class="adpic3" src="MockData/images/ad3.jpg" width="100%" height="180" alt="无法显示">
+      </a>
+    </div>
+  </div>
+  <!-- 如果需要分页器 -->
+  <div class="swiper-pagination"></div>
+</div>
+<div id="class" class="container">
+  <a class="class-left col-xs-6" style="padding:0;text-decoration:none;" href="#">
+    <img class="book" src="MockData/images/二手书籍.png">
+    <span class="class-text">二手书籍</span>
+  </a>
+  <a class="class-right col-xs-6" style="padding:0;text-decoration:none;" href="#">
+    <img class="ride" src="MockData/images/校园出行.png">
+    <span class="class-text">校园出行</span>
+  </a>
+  <a class="class-left col-xs-6" style="padding:0;text-decoration:none;" href="#">
+    <img class="exercise" src="MockData/images/运动健身.png">
+    <span class="class-text">运动健身</span>
+  </a>
+  <a class="class-right col-xs-6" style="padding:0;text-decoration:none;" href="#">
+    <img class="dress" src="MockData/images/穿搭美妆.png">
+    <span class="class-text">穿搭美妆</span>
+  </a>
+  <a class="class-left col-xs-6" style="padding:0;text-decoration:none;border-bottom:1px solid #999;" href="#">
+    <img class="play" src="MockData/images/生活娱乐.png">
+    <span class="class-text">生活娱乐</span>
+  </a>
+  <a class="class-right col-xs-6" style="padding:0;text-decoration:none;border-bottom:1px solid #999;" href="#">
+    <img class="others" src="MockData/images/其他.png">
+    <span class="class-text">其他</span>
+  </a>
+</div>
+<div class="recommend">为您推荐</div>
+<div class="banner">
+  <div class="banner-center">
+    <div class="banner-container">
+      <a id="banner-sale" href="#" onclick="sale()">我想卖</a>
+      <a id="banner-buy" href="#" onclick="buy()">我想买</a>
+    </div>
+  </div>
+</div>
+<div id="main-sale" class="container">
+  <a class="main-left col-xs-6" style="padding:0;text-decoration:none;" href="#">
+    <img class="center-block img-responsive" src="MockData/images/相机.png">
+    <ul class="goods-detial">
+      <li class="goods-name">商品名称</li>
+      <li class="goods-price">5000元</li>
+    </ul>
+  </a>
+  <a class="goods-list main-right col-xs-6" style="padding:0;text-decoration:none;" href="#">
+    <img class="center-block img-responsive" src="MockData/images/相机.png">
+    <ul class="goods-detial">
+      <li class="goods-name">商品名称</li>
+      <li class="goods-price">5000元</li>
+    </ul>
+  </a>
+  <a class="goods-list main-left col-xs-6" style="padding:0;text-decoration:none;" href="#">
+    <img class="center-block img-responsive" src="MockData/images/相机.png">
+    <ul class="goods-detial">
+      <li class="goods-name">商品名称</li>
+      <li class="goods-price">5000元</li>
+    </ul>
+  </a>
+  <a class="goods-list main-right col-xs-6" style="padding:0;text-decoration:none;" href="#">
+    <img class="center-block img-responsive" src="MockData/images/相机.png">
+    <ul class="goods-detial">
+      <li class="goods-name">商品名称</li>
+      <li class="goods-price">5000元</li>
+    </ul>
+  </a>
+  <a class="goods-list main-left col-xs-6" style="padding:0;text-decoration:none;" href="#">
+    <img class="center-block img-responsive" src="MockData/images/相机.png">
+    <ul class="goods-detial">
+      <li class="goods-name">商品名称</li>
+      <li class="goods-price">5000元</li>
+    </ul>
+  </a>
+  <a class="goods-list main-right col-xs-6" style="padding:0;text-decoration:none;" href="#">
+    <img class="center-block img-responsive" src="MockData/images/相机.png">
+    <ul class="goods-detial">
+      <li class="goods-name">商品名称</li>
+      <li class="goods-price">5000元</li>
+    </ul>
+  </a>
+</div>
+<div id="main-buy" class="container">
+  <a class="main-left col-xs-6" style="padding:0;text-decoration:none;" href="#">
+    <img class="center-block img-responsive" src="MockData/images/相机.png">
+    <ul class="goods-detial">
+      <li class="goods-name">商品名称</li>
+      <li class="goods-price">5000元</li>
+    </ul>
+  </a>
+  <a class="main-right col-xs-6" style="padding:0;text-decoration:none;" href="#">
+    <img class="center-block img-responsive" src="MockData/images/相机.png">
+    <ul class="goods-detial">
+      <li class="goods-name">商品名称</li>
+      <li class="goods-price">5000元</li>
+    </ul>
+  </a>
+  <a class="main-left col-xs-6" style="padding:0;text-decoration:none;" href="#">
+    <img class="center-block img-responsive" src="MockData/images/相机.png">
+    <ul class="goods-detial">
+      <li class="goods-name">商品名称</li>
+      <li class="goods-price">5000元</li>
+    </ul>
+  </a>
+  <a class="main-right col-xs-6" style="padding:0;text-decoration:none;" href="#">
+    <img class="center-block img-responsive" src="MockData/images/相机.png">
+    <ul class="goods-detial">
+      <li class="goods-name">商品名称</li>
+      <li class="goods-price">5000元</li>
+    </ul>
+  </a>
+  <a class="main-left col-xs-6" style="padding:0;text-decoration:none;" href="#">
+    <img class="center-block img-responsive" src="MockData/images/相机.png">
+    <ul class="goods-detial">
+      <li class="goods-name">商品名称</li>
+      <li class="goods-price">5000元</li>
+    </ul>
+  </a>
+
+</div>
+
+<div class="bottom-box"></div>
+<div class="bottom">
+  <div class="col-xs-4">
+    <a style="color:#666;text-decoration:none;" href="#">
+      <ul class="shouye">
+        <li><img class="img-responsive" src="MockData/images/首页1.png"></li>
+        <li style="color:#666;font-size:7px;margin-top:2px;text-align:center;">首页</li>
+      </ul>
+    </a>
+  </div>
+  <div class="col-xs-4">
+    <a style="color:#666;text-decoration:none;" href="#">
+      <ul class="fabu-button">
+        <li class="fabu-icon">
+          <img class="img-responsive" src="MockData/images/发布.png">
+        </li>
+        <li style="color:#666;font-size:7px;margin-top:34px;text-align:center;">发布</li>
+      </ul>
+    </a>
+  </div>
+  <div class="col-xs-4">
+    <a style="color:#666;text-decoration:none;" href="#">
+      <ul class="wo">
+        <li><img class="img-responsive" src="MockData/images/我.png"></li>
+        <li style="color:#666;font-size:7px;margin-top:1px;text-align:center;">我</li>
+      </ul>
+    </a>
+  </div>
+</div>
+<div class="publish-bg"></div>
+<div class="pub">
+  <a class="pub-close" href="javascript:void(0)">×</a>
+  <ul>
+    <li>
+      <a href="">
+        <img src="img/logo.png" width="30" height="30" alt=""/>
+        我想买
+      </a>
+    </li>
+    <li>
+      <a href="">
+        <img src="img/logo.png" width="30" height="30" alt=""/>
+        我想卖
+      </a>
+    </li>
+  </ul>
+</div>
+<!-- swiper-3.3.1.min.js -->
+<script src="./js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="./js/swiper-3.4.1.jquery.min.js"></script>
+<script type="text/javascript">
+  function buy() {
+    $("#banner-buy").css({
+      "color": "#f4cf48",
+      "border-bottom": "2px solid #f4cf48",
+    });
+    $("#banner-sale").css({
+      "color": "#999",
+      "border-bottom": "none",
+    });
+    $("#main-buy").css("display", "block");
+    $("#main-sale").css("display", "none");
+
+  }
+  function sale() {
+    $("#banner-sale").css({
+      "color": "#f4cf48",
+      "border-bottom": "2px solid #f4cf48",
+    });
+    $("#banner-buy").css({
+      "color": "#999",
+      "border-bottom": "none",
+    });
+    $("#main-sale").css("display", "block");
+    $("#main-buy").css("display", "none");
+  }
+  function showCancel() {
+    $("#cancel").css("display", "block");
+  }
+  function cancel() {
+    $("#cancel").css("display", "none");
+    $("#input").val("");
+  }
+</script>
+<script type="text/javascript">
+  var mySwiper = new Swiper('.swiper-container', {
+    //上下
+    // direction:'vertical',
+    // 是否 循环
+    loop: true,
+    // 如果需要 分页器
+    pagination: '.swiper-pagination',
+  })
+  //发布
+  function _show(ths){
+    $(ths).show().stop(true,true).animate({'bottom':'0'});
+  }
+  function _hide(ths){
+    $(ths).hide().stop(true,true).animate({'bottom':'-20px'});;
+  }
+  $(document).on('click','.fabu-icon',function(){
+    _show('.publish-bg');
+    _show('.pub')
+  })
+  $(document).on('click','.pub-close',function(){
+    _hide('.publish-bg');
+    _hide('.pub')
+  })
+</script>
+</body>
+</html>

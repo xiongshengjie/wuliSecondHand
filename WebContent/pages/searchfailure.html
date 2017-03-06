@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<link rel="stylesheet" type="text/css" href="../css/搜索失败.css">
+	<link rel="stylesheet" type="text/css" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<title>搜索失败</title>
+	<script type="text/javascript" src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	function buy(){
+		$("#banner-buy").css({"color":"#f4cf48",
+							  "border-bottom":"2px solid #f4cf48",
+							});
+		$("#banner-sale").css({"color":"#999",
+							   "border-bottom":"none",
+							});
+		$("#main-buy").css("display","block");
+		$("#main-sale").css("display","none");
+		
+	}
+	function sale(){
+		$("#banner-sale").css({"color":"#f4cf48",
+							  "border-bottom":"2px solid #f4cf48",
+							});
+		$("#banner-buy").css({"color":"#999",
+							   "border-bottom":"none",
+							});
+		$("#main-sale").css("display","block");
+		$("#main-buy").css("display","none");
+	}
+	function showCancel(){
+		$("#cancel").css("display","block");
+	}
+	function cancel(){
+		$("#cancel").css("display","none");
+		$("#input").val("");
+	}
+	</script>
+</head>
+<body style="background-color:#eee;">
+	<div class="head">
+		<a class="head-return" style="color:#999;text-decoration:none;" href="#"><</a>
+		<form class="search-box">
+			<button class="search-button"></button>
+			<input id="input" class="search-input" onclick="showCancel()" />
+		</form>
+		<span id="cancel" class="search-cancel" onclick="cancel()">取消</span>
+	</div>
+	<div class="banner">
+		<div class="banner-center">
+			<div class="banner-container">
+				<a id="banner-sale" href="#" onclick="sale()">我想卖</a>
+				<a id="banner-buy" href="#" onclick="buy()">我想买</a>
+			</div>
+		</div>
+	</div>
+	<div class="main">
+		<img class="center-block main-pic" src="../MockData/images/搜索失败.png">
+		<span class="center-block main-text">抱歉，没有找到您需要的物品呢</span>
+		<div class="bottom"></div>
+	</div>
+</body>
+</html>

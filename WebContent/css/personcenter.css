@@ -1,0 +1,109 @@
+body{
+	width: 100%;
+	font-family: Microsoft yahei;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+#head{
+	width: 100%;
+	height: 211px;
+	border-bottom: 4px solid #eee;
+	background-color: #f4ce49;	
+}
+
+.user-info{
+	width: 75px;
+	margin: 0;
+	padding: 0;
+	margin-top: 52px;
+}
+#user-name{
+	margin-top: 25px;
+	text-align: center;
+	font-size: 17px;
+	color: #fff;
+}
+#main{
+	width: 100%;
+	padding: 0;
+}
+#main div{
+	padding: 0;
+}
+#top-left{
+	height: 150px;
+	border-right: 2px solid #eee;
+	border-bottom: 1px solid #bdbcc1;
+}
+#top-right{
+	height: 150px;
+	border-bottom: 1px solid #bdbcc1;
+}
+#bottom-left{
+	height: 150px;
+	border-right: 2px solid #eee;
+	border-bottom: 1px solid #bdbcc1;
+	border-top: 2px solid #eee;
+}
+#bottom-right{
+	height: 150px;
+	border-bottom: 1px solid #bdbcc1;
+	border-top: 2px solid #eee;
+}
+.ziliao{
+	width: 56px;
+	margin-top: 30px;
+}
+.fabu{
+	width: 56px;
+	margin-top: 50px;
+}
+.shoucang{
+	width: 56px;
+	margin-top: 40px;
+}
+.shezhi{
+	width: 56px;
+	margin-top: 30px;
+}
+.bottom-box{
+	height: 49px;
+}
+.bottom{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 49px;
+	background-color: #fff;
+	box-shadow: 0px -10px 5px #eee;
+	-moz-box-shadow: 0px -10px 5px #eee;
+	-webkit-box-shadow: 0px -10px 5px #eee;
+}
+.shouye{
+	width: 30px;
+	margin: 0 auto;
+	margin-top: 6px;
+}
+.wo{
+	width: 20px;
+	margin: 0 auto;
+	margin-top: 6px;
+}
+.fabu-button{
+	position: relative;
+	width: 30px;
+	margin: 0 auto;
+	margin-top: 6px;
+}
+.fabu-icon{
+	position: absolute;
+	left: -13px;
+	top: -58px;
+	width: 54px;
+}

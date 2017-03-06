@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>商品详情</title>
+    <link rel="stylesheet" type="text/css" href="../css/details.css">
+    
+</head>
+<body>
+    <div class="fir-box">
+        <a class="return-arr" href=""><</a>
+        <span class="title">商品详情</span>
+        <input id="collection" type="image" src="../img/noselect.png" width="22" height="21" value="collect" onclick="changeImage()">
+    </div>
+    <div class="sec-box">
+        <img class="userpic" src="../img/userpic.png" width="54" height="54">
+        <span class="username">小二郎</span>
+        <span class="whatclass">计算机学院大一</span>
+        <span class="issuetime">一天前发布</span>
+        <span class="pricename">一口价</span>
+        <span class="price">￥100</span>
+    </div>
+    <div class="thi-box">
+        <div class="goods-name">
+            商品名称
+        </div>
+        <img class="product" src="../img/product.png" width="90%" height="320">
+        <img class="product" src="../img/product.png" width="90%" height="320">
+        <img class="product" src="../img/product.png" width="90%" height="320">
+        <div class="address">
+            <span>交易地点</span>
+            <span class="xiaoqu">鉴湖校区</span>
+        </div>
+        <div class="intro-product">
+            <div>商品描述</div>
+            <p class="intro-text">这是一款月饼.月饼，或叫中秋饼，是大中华地区、越南、琉球的中秋节食品，越南称为餅中秋（Bánh trung thu）。
+                月饼最初为形如满月的饼，外观为圆形，后来有方形或其他形状。月饼外层通常以小麦粉为皮，其内有馅，馅料多种多样。中秋节吃月饼是中华文
+                化的传统风俗。中式月饼以广式月饼、潮式月饼、苏式月饼、京式月饼此四大派别最为普遍；此外各地尚有火腿月饼（云南）、椒葱月饼（江西）、
+                水晶月饼（潮汕）、薄酥月饼（湖南）、冬蓉月饼（台山）、德懋恭水晶饼（陕西）、三白月饼（黑龙江）、海味月饼（山东）、鸡丝月饼
+                （清真式）、酥皮芋泥月饼（潮汕、福建）、蛋黄酥、绿豆椪（台湾）等</p>
+        </div>
+    </div>
+    <a id="contact" class="contactcss show-layer" data-show-layer="hw-layer" role="button">
+        联系卖家
+    </a>
+    <div class="hw-overlay" id="hw-layer">
+        <div class="hw-layer-wrap">
+            <span class="hwLayer-close"></span>
+            <div>
+                <div class="hw-icon"></div>
+                <div>
+                    <p>
+                        <span class="sale-wx">微信:</span><span>ahwjslj</span>
+                    </p>
+                    <p>
+                        <span class="sale-qq">QQ:</span><span>1152502713</span>
+                    </p>
+                    <p>
+                        <span class="sale-message">短信:</span><span>13297951111</span>
+                    </p>
+                    <button class="hwLayer-ok">确 定</button>
+                    <button class="hwLayer-cancel">取 消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script>
+        //点击添加或取消收藏
+        function changeImage() {
+            var image = document.getElementById('collection');
+            if (image.src.match("noselect")) {
+                image.src = "img/select.png";
+                alert("收藏成功");
+            } else {
+                image.src = "img/noselect.png";
+                alert("取消收藏");
+            }
+        }
+        //点击弹出联系方式列表
+        $(function(){
+            //展示层
+            function showLayer(id){
+                var layer = $('#'+id),
+                    layerwrap = layer.find('.hw-layer-wrap');
+                layer.fadeIn();
+                //屏幕居中
+                layerwrap.css({
+                    'margin-top': -layerwrap.outerHeight()/2
+                });
+            }
+
+            //隐藏层
+            function hideLayer(){
+                $('.hw-overlay').fadeOut();
+            }
+
+            $('.hwLayer-ok,.hwLayer-cancel,.hwLayer-close').on('click', function() {
+                hideLayer();
+            });
+
+            //触发弹出层
+            $('.show-layer').on('click',  function() {
+                var layerid = $(this).data('show-layer');
+                showLayer(layerid);
+            });
+
+            //点击或者触控弹出层外的半透明遮罩层，关闭弹出层
+            $('.hw-overlay').on('click',  function(event) {
+                if (event.target == this){
+                    hideLayer();
+                }
+            });
+
+            //按ESC键关闭弹出层
+            $(document).keyup(function(event) {
+                if (event.keyCode == 27) {
+                    hideLayer();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

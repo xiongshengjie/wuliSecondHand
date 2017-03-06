@@ -1,0 +1,76 @@
+body{
+            margin:0;
+            padding:0;
+            font-family: "Microsoft YaHei UI";
+        }
+        .fir-box{
+            overflow: hidden;
+        }
+        .return-arr:link,
+        .return-arr:visited{
+            text-decoration: none;
+            color:#999;
+        }
+        .return-arr{
+            float: left;
+            margin: 2% 0 0 4%;
+            font-family: SimSun;
+            font-weight: 900;
+            font-size: 30px;
+        }
+        .sec-box{
+            margin-top: 30px;
+            overflow: hidden;
+        }
+        .logo{
+            clear: both;
+            display: block;
+            margin:auto;
+        }
+        .thi-box{
+            margin-top: 18px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .welcoming{
+            height: 20px;
+            font-size:18px;
+            line-height:20px;
+        }
+        .user,
+        .pass{
+            margin: 20px 15% 0 15%;
+            height: 30px;
+            width: 70%;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: solid 1px #ccc;
+            border-radius: 0;
+            outline: none;
+        }
+        .login-btn{
+            height: 36px;
+            width:70%;
+            margin: 50px 15% 0 15%;
+            border-radius: 18px;
+            border: none;
+            color: #fff;
+            background: #f4ce49;
+            outline: none;
+        }
+		.login-btn:hover
+		{
+			background:#FF0;
+		}
+		.login-btn:active
+		{
+			background:#0F0;
+		}
+        input[type='submit'],
+        input[type='reset']{
+            -webkit-appearance: none;
+        }
+        textarea{
+            -webkit-appearance: none;
+        }

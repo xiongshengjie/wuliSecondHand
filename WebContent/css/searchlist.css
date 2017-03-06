@@ -1,0 +1,151 @@
+body{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: Microsoft yahei;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+.head{
+	position: relative;
+	width: 100%;
+	height: 64px;
+	text-align: center;
+	border-bottom:1px solid #999; 
+	background-color: #eee;
+	font-size: 17px;
+	color: #666;
+}
+.head-return{
+	position: absolute;
+	left: 10px; 
+	bottom: 10px;
+	font-size: 17px;
+}
+.search-box{
+	position: absolute;
+	left: 30px;
+	bottom:10px;
+	width: 78%;
+	height: 23px;
+	border-radius: 3px;
+	background-color: #fff;
+}
+.search-button{
+	float: left;
+	width: 17px;
+	height: 17px;
+	margin: 3px;
+	border:none;
+	background:url(../MockData/images/放大镜.png)no-repeat;
+}
+.search-input{
+	float: left;
+	width: 85%;
+	height: 23px;
+	border:none;
+	font-size: 14px;
+	color: #666;
+}
+.search-cancel{
+	display: none;
+	position: absolute;
+	bottom: 10px;
+	right: 5px;
+	font-size: 14px;
+	color: #999;
+}
+.banner{
+	width: 100%;
+	height: 35px;
+	border-bottom: 1px solid #bdbdc0;
+}
+.banner-center{
+	width: 150px;
+	height: 35px;
+	margin: 0 auto;
+}
+.banner-container{
+	position: absolute;
+	width: 150px;
+	height: 35px;
+}
+#banner-sale{
+	position: absolute;
+	bottom: 0;
+	width: 70px;
+	height: 33px;
+	line-height: 33px;
+	text-align: center;
+	text-decoration: none;
+	border-bottom: 2px solid #f4cf48;
+	font-size: 14px;
+	color: #f4ce49;
+}
+#banner-buy{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 70px;
+	height: 33px;
+	line-height: 33px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 14px;
+	color: #999;
+}
+#main-sale{
+	width: 100%;
+	padding: 0;
+	padding-top: 8px;
+	background-color: #eee;
+}
+#main-sale div{
+	padding: 0;
+}
+#main-buy{
+	display: none;
+	width: 100%;
+	padding: 0;
+	padding-top: 8px;
+	background-color: #eee;
+}
+#main-buy div{
+	padding: 0;
+}
+.main-left{
+	height: 189px;
+	border-top: 2px solid #eee;
+	border-right: 2px solid #eee;
+	border-bottom: 1px solid #999;
+	background-color: #fff;
+}
+.main-right{
+	height: 189px;
+	border-top: 2px solid #eee;
+	border-bottom: 1px solid #999;
+	background-color: #fff;
+}
+.goods-detial{
+	padding:0 10px;
+}
+.goods-name{
+	overflow: hidden;
+	height: 14px;
+	line-height: 14px;
+	font-size: 11px;
+	color: #999;
+}
+.goods-price{
+	overflow: hidden;
+	height: 14px;
+	line-height: 14px;
+	font-size: 11px;
+	color: #ec4b1f;
+}
