@@ -58,9 +58,6 @@ public class Product implements Serializable{
 	public void setIschange(String ischange) {
 		this.ischange = ischange;
 	}
-	public void setImgurl(String imgurl) {
-		this.imgurl = imgurl;
-	}
 	public String getId() {
 		return id;
 	}
@@ -94,7 +91,7 @@ public class Product implements Serializable{
 	public String getImgurl() {
 		return imgurl;
 	}
-	public void setImgurl1(String imgurl) {
+	public void setImgurl(String imgurl) {
 		this.imgurl = imgurl;
 	}
 }

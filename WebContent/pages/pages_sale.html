@@ -15,7 +15,7 @@
 		<!--<span class="title">我想卖</span>-->
 	<!--</div>-->
 	<div class="main">
-    <form id="upform" action="http://localhost:8080/wuliSecondHand/addProduct" method="post" enctype="multipart/form-data">
+    <form id="upform" action="http://www.wulikm.cn/wuliSecondHand/addProduct" method="post" enctype="multipart/form-data">
 		<div class="weui-cells weui-cells_form">
 			<div class="weui-cell weui-cell-textarea">
             
@@ -269,7 +269,7 @@
 		
 		var form = new FormData(document.getElementById("upform"));
 		$.ajax({
-			url:"http://localhost:8080/wuliSecondHand/addProduct",         //请求地址
+			url:"http://www.wulikm.cn/wuliSecondHand/addProduct",         //请求地址
 			type: "POST",                       //请求方式
 			data:form,              //请求参数
 			dataType: "json",
@@ -281,7 +281,7 @@
 				if(json.errCode==0)
 				{
 					alert(json.errMsg);
-					window.location.href="http://wulikm.cn/wuliSecondHand/index.html";
+					window.location.href="http://www.wulikm.cn/wuliSecondHand/index.html";
 				}
 				if(json.errCode==1)
 				{

@@ -86,7 +86,7 @@ public class AddProductServlet extends HttpServlet {
 					String randomDir = FileUploadUtils
 							.generateRandomDir(randomName);
 					// 图片存储父目录
-					String imgurl_parent = "/productImg" + randomDir;
+					String imgurl_parent = "productImg" + randomDir;
 
 					File parentDir = new File(this.getServletContext()
 							.getRealPath(imgurl_parent));

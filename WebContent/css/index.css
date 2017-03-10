@@ -172,6 +172,21 @@ li{
 	font-size: 14px;
 	color: #f4ce49;
 }
+.zero_a
+{
+	padding:0;
+	text-decoration:none;
+}
+.zero_a:hover
+{
+	text-decoration:none;
+}
+
+.img_size
+{
+	max-height:85%;
+	max-width:90%
+}
 #banner-buy{
 	position: absolute;
 	right: 0;
