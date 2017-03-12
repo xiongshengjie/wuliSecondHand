@@ -231,9 +231,11 @@ li{
 	background-color: #fff;
 }
 .goods-detial{
-	padding:0 10px;
+	position:absolute;
+	bottom:2px;
+	padding:1px;
 }
-.goods-name{
+.goods-name{	
 	overflow: hidden;
 	height: 14px;
 	line-height: 14px;
@@ -246,6 +248,10 @@ li{
 	line-height: 14px;
 	font-size: 11px;
 	color: #ec4b1f;
+}
+.goods-id
+{
+	display:none;
 }
 .bottom-box{
 	height: 60px;

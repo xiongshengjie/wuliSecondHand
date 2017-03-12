@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../css/details.css">
     
 </head>
-<body>
+<body style="display:none">
     <div class="fir-box">
         <a class="return-arr" href=""><</a>
         <span class="title">商品详情</span>
@@ -25,9 +25,6 @@
         <div class="goods-name">
             商品名称
         </div>
-        <img class="product" src="../img/product.png" width="90%" height="320">
-        <img class="product" src="../img/product.png" width="90%" height="320">
-        <img class="product" src="../img/product.png" width="90%" height="320">
         <div class="address">
             <span>交易地点</span>
             <span class="xiaoqu">鉴湖校区</span>
@@ -68,6 +65,7 @@
 
     <script src="../js/jquery-3.1.1.min.js"></script>
     <script>
+	
         //点击添加或取消收藏
         function changeImage() {
             var image = document.getElementById('collection');
@@ -121,6 +119,42 @@
                 }
             });
         });
+		//alert(sessionStorage.goods_id);
+		//$("<img>").addClass("product").attr("src","..//"+"img/product.png").insertAfter($(".thi-box>.goods-name"));
+		var good_id=sessionStorage.goods_id;
+		alert(good_id);
+		$.ajax(
+		{
+			type:"GET",
+			url:"../findProductById",
+			data:{"id":good_id},
+			dataType:"json",
+			success: function(data)
+			{
+				var jsonData=eval(data);
+				var userpic=null;
+				var username=null;
+				var whatclass=null;
+				var issuetime=null;
+				
+				var pricename=jsonData.isbargin=="on"?"一口价":"可协商";
+				var price="&yen;"+jsonData.price;
+				var goods_name=jsonData.title;
+				var imgurl=jsonData.imgurl;
+				var schoolarea=jsonData.schoolarea;
+				var description=jsonData.description;
+				alert(schoolarea);
+				
+				$(".sec-box>.pricename").text(pricename);
+				$(".sec-box>.price").text(price);
+				$(".thi-box>.goods-name").text(goods_name);
+				$("<img>").addClass("product").attr("src","..//"+imgurl).insertAfter($(".thi-box>.goods-name"));
+				
+				$(".thi-box>.address>.xiaoqu").text(schoolarea);
+				$(".thi-box>.intro-product>.intro-text").text(description);
+				$("body").css("display","block");
+			}
+		})
     </script>
 </body>
 </html>

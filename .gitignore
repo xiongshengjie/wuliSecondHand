@@ -1,0 +1,2 @@
+#忽略Webcontent/admin下的所有文件
+admin/*

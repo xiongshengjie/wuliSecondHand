@@ -27,22 +27,31 @@ window.onload=function()
 			var img=new Array();
 			var title=new Array();
 			var price=new Array();
+			var id=new Array();
 					
 			for(var i=0;i<data.ps.length;i++)
 			{
 				img.push(data.ps[i].imgurl);
 				title.push(data.ps[i].title);
 				price.push(data.ps[i].price);
+				id.push(data.ps[i].id);
 			}
 			for(var flag=0;flag<img.length;flag++)
 			{
-				createObj(img[flag],price[flag],title[flag],flag)	
+				createObj(img[flag],price[flag],title[flag],flag,id[flag])	
 			}
+			$("#main-sale>a").click(function()  //问题 怎么获取点击的a下面的 goods-id
+					{
+						var goods_id_Tag=$(this).find("ul").find("li")[1];
+						var goods_id=$(goods_id_Tag).text();
+						sessionStorage.goods_id=goods_id;
+						window.location.href="pages\\details.html";
+					})
 	    }
     }
 	
 	
-	xmlhttp.open("GET","http://www.wulikm.cn/wuliSecondHand/showProductByPage?currentPage="+currentPage,false);
+	xmlhttp.open("GET","showProductByPage?currentPage="+currentPage,false);
 	
 	xmlhttp.send(null);
 	//如果下拉到最后，则进行刷新
@@ -54,7 +63,7 @@ window.onload=function()
 			var Int_number=/^[0-9]*[1-9][0-9]*$/;
 			if(Int_number.test(currentPage))
 			{	
-				xmlhttp.open("GET","http://www.wulikm.cn/wuliSecondHand/showProductByPage?currentPage="+currentPage,false);
+				xmlhttp.open("GET","showProductByPage?currentPage="+currentPage,false);
 				
 				xmlhttp.send(null);
 			}
@@ -83,7 +92,7 @@ function needUpload()
 	return (lastBoxTop<scrollTop+dH)?true:false;
 	
 }
-function createObj(imgurl,price,title,flag)  //flag用来判断a 标签应该加main-rignt 还是main-left flag%2=0代表左边，flag%2=1代表右边
+function createObj(imgurl,price,title,flag,id)  //flag用来判断a 标签应该加main-rignt 还是main-left flag%2=0代表左边，flag%2=1代表右边
 {
 	var $main_sale=$('#main-sale');
 	if(flag%2==1)  //1=左边
@@ -98,8 +107,10 @@ function createObj(imgurl,price,title,flag)  //flag用来判断a 标签应该加
 	Tag_img.attr('src',imgurl);
 	var Tag_ul=$('<ul>').addClass("goods-detial").appendTo($(Tag_a));
 	var Tag_li_name=$('<li>').addClass("goods-name").appendTo($(Tag_ul));
+	var Tag_li_id=$('<li>').addClass("goods-id").appendTo($(Tag_ul));
 	var Tag_li_price=$('<li>').addClass("goods-price").appendTo($(Tag_ul));
 	$(Tag_li_name).text(title);
+	$(Tag_li_id).text(id);
 	$(Tag_li_price).text(price+"元");
 	
 }

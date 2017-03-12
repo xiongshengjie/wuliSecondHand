@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import cn.wuliSecondHand.domain.Product;
 import cn.wuliSecondHand.exception.FindProductByIdException;
 import cn.wuliSecondHand.service.ProductService;
+import cn.wuliSecondHand.utils.JsonUtils;
 
 /**
  * 根据商品id查找指定商品信息的servlet
@@ -31,15 +32,14 @@ public class FindProductByIdServlet extends HttpServlet {
 		try {
 			// 调用service层方法，通过id查找商品
 			Product p = service.findProductById(id);
-			request.setAttribute("p", p);
+			String json = JsonUtils.toJson(p);
 			// 普通用户默认不传递type值，会跳转到搜索结果页面
 			if (type == null) {
-				request.getRequestDispatcher("/searchlist.html").forward(request,response);
+				response.getWriter().write(json);
 				return;
 			}
 			
 			
-			request.getRequestDispatcher("").forward(request, response);	//后台管理商品页面
 			return;
 		} catch (FindProductByIdException e) {
 			e.printStackTrace();
