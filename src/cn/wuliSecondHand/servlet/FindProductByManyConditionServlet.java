@@ -34,7 +34,7 @@ public class FindProductByManyConditionServlet extends HttpServlet {
 
 		request.setAttribute("ps", ps);
 
-		request.getRequestDispatcher("/searchlist.html").forward(
+		request.getRequestDispatcher("/admin/products/list.jsp").forward(
 				request, response);
 
 	}

@@ -20,6 +20,39 @@ public class User implements Serializable{
 	 * 用户密码
 	 */
 	private String password;
+	/**
+	 * 微信
+	 */
+	private String wechat;
+	/**
+	 * qq
+	 */
+	private String qq;
+	/**
+	 * 电话号码
+	 */
+	private String telnum;
+	
+	
+	
+	public String getWechat() {
+		return wechat;
+	}
+	public void setWechat(String wechat) {
+		this.wechat = wechat;
+	}
+	public String getQq() {
+		return qq;
+	}
+	public void setQq(String qq) {
+		this.qq = qq;
+	}
+	public String getTelnum() {
+		return telnum;
+	}
+	public void setTelnum(String telnum) {
+		this.telnum = telnum;
+	}
 	
 	public String getId() {
 		return id;

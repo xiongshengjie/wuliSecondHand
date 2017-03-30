@@ -3,12 +3,14 @@ package cn.wuliSecondHand.servlet;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.jws.soap.SOAPBinding.Use;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +25,10 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
 
 import cn.wuliSecondHand.domain.Product;
+import cn.wuliSecondHand.domain.User;
 import cn.wuliSecondHand.exception.AddProductException;
 import cn.wuliSecondHand.service.ProductService;
+import cn.wuliSecondHand.utils.Base64ToImage;
 import cn.wuliSecondHand.utils.FileUploadUtils;
 import cn.wuliSecondHand.utils.IdUtils;
 import net.sf.json.JSONObject;
@@ -61,6 +65,7 @@ public class AddProductServlet extends HttpServlet {
 		ServletFileUpload upload = new ServletFileUpload(dfif);
 		// 处理上传文件中文乱码
 		upload.setHeaderEncoding("utf-8");
+		String imgurlcompress = null;
 		try {
 			// 解析request得到所有的FileItem
 			List<FileItem> items = upload.parseRequest(request);
@@ -96,17 +101,27 @@ public class AddProductServlet extends HttpServlet {
 					}
 
 					String imgurl = imgurl_parent + "/" + randomName;
-
 					map.put("imgurl", imgurl);
-
-					IOUtils.copy(item.getInputStream(), new FileOutputStream(
-							new File(parentDir, randomName)));
+					OutputStream ops = new FileOutputStream(new File(parentDir, randomName));
+					IOUtils.copy(item.getInputStream(), ops);
+					randomName = FileUploadUtils
+							.generateRandonFileName(fileName);
+					imgurlcompress = imgurl_parent + "/" + randomName;
+					ops.flush();
+					ops.close();
 					item.delete();
-
 				}
 
 			}
-
+			
+			boolean flag = Base64ToImage.GenerateImage(map.get("img"), imgurlcompress, request);
+			
+			User user = (User)request.getSession().getAttribute("user");
+			map.put("user", user.getName());
+			
+			if(flag){
+				map.put("imgurlcompress", imgurlcompress);
+			}
 		} catch (FileUploadException e) {
 			e.printStackTrace();
 		}

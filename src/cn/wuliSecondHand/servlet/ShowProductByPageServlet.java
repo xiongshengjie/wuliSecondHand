@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.wuliSecondHand.domain.PageBean;
+import cn.wuliSecondHand.domain.User;
 import cn.wuliSecondHand.service.ProductService;
 import cn.wuliSecondHand.utils.JsonUtils;
 
@@ -45,11 +46,18 @@ public class ShowProductByPageServlet extends HttpServlet {
 		if (_category != null) {
 			category = _category;
 		}
+		
+		String username = null;
+		
+		if (request.getAttribute("type")!=null) {
+			User user = (User) request.getSession().getAttribute("user");
+			username = user.getName();
+		}
 
 		// 4.调用service，完成获取当前页分页Bean数据.
 		ProductService service = new ProductService();
 		PageBean bean = service.findProductByPage(currentPage, currentCount,
-				category);
+				category,username);
 
 		// 将数据存储到request范围，跳转到index.html页面展示
 		String json = JsonUtils.toJson(bean);

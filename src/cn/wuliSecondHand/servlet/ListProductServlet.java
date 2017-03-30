@@ -34,7 +34,7 @@ public class ListProductServlet extends HttpServlet {
 			// 将查询出的所有商品放进request域中
 			request.setAttribute("ps", ps);
 			// 重定向到index.html页面,在js中获取request中的ps属性
-			request.getRequestDispatcher("/index.html").forward(
+			request.getRequestDispatcher("/admin/products/list.jsp").forward(
 					request, response);
 			return;
 		} catch (ListProductException e) {

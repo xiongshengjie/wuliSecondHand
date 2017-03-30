@@ -7,15 +7,25 @@ window.onload=function()
 	var currentPage=1;//表示加载数据的页数
 	//首页加载
 	var xmlhttp;  //存放xhr对象
+	var xmlhttp1;
 	if(window.XMLHttpRequest)  //如果浏览器支持
 	{
 		xmlhttp=new XMLHttpRequest();
+		xmlhttp1=new XMLHttpRequest();
 	}
 	else   //如果不支持
 	{
 		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		xmlhttp1=new ActiveXObject("Microsoft.XMLHTTP");
+
 	}
-	
+	xmlhttp1.onreadystatechange=function()
+	{
+		if(xmlhttp.readyState==4&&xmlhttp.status==200)
+		{
+			
+		}
+	}
 	xmlhttp.onreadystatechange=function()   //xhr对象状态改变时（即后台已经开始处理或者处理完毕）一次传递处理6个对象
 	{
 		if(xmlhttp.readyState==4&&xmlhttp.status==200)
@@ -31,7 +41,7 @@ window.onload=function()
 					
 			for(var i=0;i<data.ps.length;i++)
 			{
-				img.push(data.ps[i].imgurl);
+				img.push(data.ps[i].imgurlcompress);
 				title.push(data.ps[i].title);
 				price.push(data.ps[i].price);
 				id.push(data.ps[i].id);
@@ -49,11 +59,13 @@ window.onload=function()
 					})
 	    }
     }
-	
+	xmlhttp1.open("GET","showProductByPage?currentPage="+currentPage,false);
+	xmlhttp1.send(null);
 	
 	xmlhttp.open("GET","showProductByPage?currentPage="+currentPage,false);
-	
 	xmlhttp.send(null);
+
+	
 	//如果下拉到最后，则进行刷新
 	$(window).on('scroll',function()
 	{
@@ -114,3 +126,10 @@ function createObj(imgurl,price,title,flag,id)  //flag用来判断a 标签应该
 	$(Tag_li_price).text(price+"元");
 	
 }
+
+function click_class(class_name)
+{
+	sessionStorage.class_id=class_name;
+	window.location.href="pages\\classification.html";
+}
+

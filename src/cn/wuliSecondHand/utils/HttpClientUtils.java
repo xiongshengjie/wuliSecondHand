@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;  
 import java.util.Map;
 
+import org.apache.http.Header;
 import org.apache.http.NameValuePair;  
 import org.apache.http.client.ClientProtocolException;  
 import org.apache.http.client.methods.CloseableHttpResponse;  
@@ -65,7 +66,7 @@ public class HttpClientUtils {
 				for (int i = 0; i < 10; i++) {
 					CloseableHttpResponse response = httpClient.execute(request);
 					// response.getStatusLine().getStatusCode();
-					org.apache.http.Header[] headers = response.getHeaders("Set-Cookie");
+					Header[] headers = response.getHeaders("Set-Cookie");
 					int cookiecount = headers.length;
 					if (cookiecount == 2) {
 						response.close();
@@ -81,7 +82,7 @@ public class HttpClientUtils {
 	        } catch (IOException e) {  
 	            e.printStackTrace();  
 	        } finally {  
-	  
+	        	
 	        }  
 	  
 	        return false;  

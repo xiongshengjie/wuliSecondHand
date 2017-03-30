@@ -6,6 +6,7 @@
     <title>登录</title>
     <link rel="stylesheet" type="text/css" href="../css/login.css">
     <script src="../js/jquery-3.1.1.min.js"></script> 
+    <script src="../js/login.js"></script>
 </head>
 <body>
     <div class="fir-box">
@@ -23,49 +24,6 @@
             <input class="pass" type="password" name="password" placeholder="密码（登录教务处时的密码)"></br>
             <input class="login-btn" type="button" value="登录">
         </form>
-        <script>
-		$(".login-btn").click(function()
-		{
-			var user=$(".user").val();
-			var pass=$(".pass").val();
-			if(user=="")
-			{
-				alert("请填写账号！");
-				login_form.username.focus();
-				return;
-			}
-			if(pass=="")
-			{
-				alert("请填写密码！");
-				login_form.password.focus();
-				return;
-			}
-			
-			$.ajax({
-			url:"http://www.wulikm.cn/wuliSecondHand/login",         //请求地址
-			type:"POST",                       //请求方式
-			data:{"username":user,"password":pass},           //请求参数
-			dataType:"json",
-	        contentType:'application/x-www-form-urlencoded',
-			success: function (data) 
-			{
-				if(data==false){
-					window.alert("您输入的用户名或密码有错！");
-	                login_form.username.focus();
-	                return;
-				}
-				else{
-					window.location.href="http://www.wulikm.cn/wuliSecondHand/index.html";
-					return;
-				}
-			},
-			fail: function (status) 
-			{
-				
-			}
-		});
-    })
-		</script>
     </div>
 </body>
 </html>

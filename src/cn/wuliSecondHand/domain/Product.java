@@ -1,6 +1,7 @@
 package cn.wuliSecondHand.domain;
 
 import java.io.Serializable;
+import java.security.Timestamp;
 
 public class Product implements Serializable{
 	/**
@@ -39,7 +40,63 @@ public class Product implements Serializable{
 	 * 图片路径
 	 */
 	private String imgurl;
+	/**
+	 * 压缩图片路径
+	 */
+	private String imgurlcompress;
+	/**
+	 * 发布人
+	 */
+	private String user;
+	/**
+	 * 微信
+	 */
+	private String wechat;
+	/**
+	 * qq
+	 */
+	private String qq;
+	/**
+	 * 电话号码
+	 */
+	private String telnum;
+	/**
+	 * 发布时间
+	 */
+	private String pushtime;
 	
+	
+	
+	public String getImgurlcompress() {
+		return imgurlcompress;
+	}
+	public void setImgurlcompress(String imgurlcompress) {
+		this.imgurlcompress = imgurlcompress;
+	}
+	public String getPushtime() {
+		return pushtime;
+	}
+	public void setPushtime(String pushtime) {
+		this.pushtime = pushtime;
+	}
+	public String getWechat() {
+		return wechat;
+	}
+	public void setWechat(String wechat) {
+		this.wechat = wechat;
+	}
+	public String getQq() {
+		return qq;
+	}
+	public void setQq(String qq) {
+		this.qq = qq;
+	}
+	public String getTelnum() {
+		return telnum;
+	}
+	public void setTelnum(String telnum) {
+		this.telnum = telnum;
+	}
 	public String getSchoolarea() {
 		return schoolarea;
 	}
@@ -94,4 +151,11 @@ public class Product implements Serializable{
 	public void setImgurl(String imgurl) {
 		this.imgurl = imgurl;
 	}
+	public String getUser() {
+		return user;
+	}
+	public void setUser(String user) {
+		this.user = user;
+	}
+	
 }

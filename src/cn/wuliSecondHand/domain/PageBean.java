@@ -7,11 +7,21 @@ public class PageBean implements Serializable{
 
 	private int currentPage;// 当前页码
 	private int totalCount;// 总条数
-	private int totalPage;// 总页数
 	private int currentCount;// 每页条数
 	private List<Product> ps;// 每页显示的数据
 	private String category;//类别
 	private String searchfield;//模糊搜索的图书名
+	private String username;
+
+	
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	public String getCategory() {
 		return category;
@@ -43,14 +53,6 @@ public class PageBean implements Serializable{
 
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
-	}
-
-	public int getTotalPage() {
-		return totalPage;
-	}
-
-	public void setTotalPage(int totalPage) {
-		this.totalPage = totalPage;
 	}
 
 	public int getCurrentCount() {

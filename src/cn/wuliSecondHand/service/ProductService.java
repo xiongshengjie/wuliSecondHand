@@ -37,7 +37,7 @@ public class ProductService {
 
 	// 分页操作
 	public PageBean findProductByPage(int currentPage, int currentCount,
-			String category) {
+			String category, String username) {
 		PageBean bean = new PageBean();
 		// 封装每页显示数据条数
 		bean.setCurrentCount(currentCount);
@@ -46,19 +46,13 @@ public class ProductService {
 
 		// 封装当前查找类别
 		bean.setCategory(category);
+		
+		bean.setUsername(username);
 
 		try {
-			// 获取总条数
-			int totalCount = dao.findAllCount(category);
-			bean.setTotalCount(totalCount);
-
-			// 获取总页数
-			int totalPage = (int) Math.ceil(totalCount * 1.0 / currentCount);
-			bean.setTotalPage(totalPage);
-
 			// 获取当前页数据
 			List<Product> ps = dao.findByPage(currentPage, currentCount,
-					category);
+					category,username);
 			bean.setPs(ps);
 
 		} catch (SQLException e) {
@@ -112,21 +106,13 @@ public class ProductService {
 		// 封装模糊查询的图书名
 		bean.setSearchfield(searchfield);
 		try {
-			// 获取总条数
-			int totalCount = dao.findBookByNameAllCount(searchfield);
-			bean.setTotalCount(totalCount);
-
-			// 获取总页数
-			int totalPage = (int) Math.ceil(totalCount * 1.0 / currentCount);
-			bean.setTotalPage(totalPage);
-
-			//满足条件的图书
+			
 			List<Product> ps = dao.findBookByName(currentPage,currentCount,searchfield);
 			bean.setPs(ps);
 			return bean;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("前台搜索框根据书名查询图书失败！");
+			throw new RuntimeException("查询失败！");
 		}
 	}
 

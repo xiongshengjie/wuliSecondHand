@@ -42,17 +42,13 @@ public class LoginServlet extends HttpServlet {
 		Map<String, Object> userpass = new HashMap<String, Object>();
 		String userName = request.getParameter("username");
 		String password = request.getParameter("password");
-		/*userpass.put("systemId", "");
-		userpass.put("xmlmsg", "");
-		userpass.put("name", "test");
-		userpass.put("password", "123");
-		userpass.put("type", "xs");
-		userpass.put("imageField.x", "66");
-		userpass.put("imageField.y", "22");*/
-		//String flag = client.httpPostRequest("http://sso.jwc.whut.edu.cn/Certification/login.do", userpass);
 		boolean flag = client.httpPostRequest("http://sso.jwc.whut.edu.cn/Certification/login.do?"
 		+"systemId=&xmlmsg=&userName="+userName+"&password="+password+"&type=xs&imageField.x=60&imageField.y=20");
 		if(flag){
+			User user = new User();
+			user.setName(userName);
+			user.setPassword(password);
+			request.getSession().setAttribute("user", user);
 			out.write("true");
 			return;
 		}
