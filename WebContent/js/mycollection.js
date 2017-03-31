@@ -11,7 +11,6 @@ window.onload=function()
 	else   //如果不支持
 	{
 		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		xmlhttp1=new ActiveXObject("Microsoft.XMLHTTP");
 
 	}
 	xmlhttp.onreadystatechange=function()   //xhr对象状态改变时（即后台已经开始处理或者处理完毕）一次传递处理6个对象
@@ -38,13 +37,7 @@ window.onload=function()
 			{
 				createObj(img[flag],price[flag],title[flag],flag,id[flag])	
 			}
-			$("#main-sale>a").click(function()  //问题 怎么获取点击的a下面的 goods-id
-				{
-					var goods_id_Tag=$(this).find("ul").find("li")[1];
-					var goods_id=$(goods_id_Tag).text();
-					sessionStorage.goods_id=goods_id;
-					window.location.href="pages\\details.html";
-				})
+			
 	    }
     }
 	
@@ -52,7 +45,7 @@ window.onload=function()
 	xmlhttp.send(null);
 
 	
-	//如果下拉到最后，则进行刷新
+	//需要加载  更新needUpload
 	$(window).on('scroll',function()
 	{
 		if(needUpload())    //下拉到最下
@@ -69,7 +62,7 @@ window.onload=function()
 	}) 
 }
 	
-
+//该功能函数需要更改
 	function needUpload()
 	{
 		var $lastBox=$("#main-sale>a").last();//获得最后一个物品展示的a对象
@@ -80,25 +73,40 @@ window.onload=function()
 		
 	}
 
-	function createObj(imgurl,price,title,flag,id)  //flag用来判断a 标签应该加main-rignt 还是main-left flag%2=0代表左边，flag%2=1代表右边
+	function createObj(imgurl,price,title,id)  //flag用来判断a 标签应该加main-rignt 还是main-left flag%2=0代表左边，flag%2=1代表右边
 	{
-		var $main_sale=$('#main-sale');
-		if(flag%2==1)  //1=左边
-		{
-			var Tag_a=$('<a>').addClass("goods-list main-right col-xs-6 zero_a").appendTo($main_sale);  //a标签
-		}
-		else
-		{
-			var Tag_a=$('<a>').addClass("goods-list main-left col-xs-6 zero_a").appendTo($main_sale);
-		}
-		var Tag_img=$('<img>').addClass("center-block img_size").appendTo($(Tag_a)); //创建图片
-		Tag_img.attr('src',imgurl);
-		var Tag_ul=$('<ul>').addClass("goods-detial").appendTo($(Tag_a));
-		var Tag_li_name=$('<li>').addClass("goods-name").appendTo($(Tag_ul));
-		var Tag_li_id=$('<li>').addClass("goods-id").appendTo($(Tag_ul));
-		var Tag_li_price=$('<li>').addClass("goods-price").appendTo($(Tag_ul));
+
+		var $main=$(".main");
+		var Tag_div=$("<div>").addClass("good").appendTo($main); //加入 main中
+		$(Tag_div).attr("id",id);
+		var Tag_img=$("<img>").addClass("good-pic").appendTo($(Tag_div));
+		Tag_img.attr("src",'../'+imgurl);
+		var Tag_ul=$("<ul>").css("float","left").appendTo($(Tag_div));
+		var Tag_li_name=$("<li>").addClass("good-name").appendTo($(Tag_ul));
+		var Tag_li_price=$("<li>").addClass("good-price").appendTo($(Tag_ul));
+
+		var Tag_a=$("<a>").addClass("good-out").appendTo($(Tag_div));
+		$(Tag_a).attr("href","#");
+		$(Tag_a).attr("onclick","out('"+id+"')");
+		$(Tag_a).text("删除"); 
 		$(Tag_li_name).text(title);
-		$(Tag_li_id).text(id);
-		$(Tag_li_price).text(price+"元");
+		$(Tag_li_price).text("￥"+price);
+		
+	}
+	function out(c)
+	{
+		var a = document.getElementById(c);
+		$.ajax(
+		{
+			type:"post",
+			data:"",
+			dataType:"",
+			url:"",
+			success:function()
+			{
+
+				$(a).hide();
+			}
+		})
 		
 	}

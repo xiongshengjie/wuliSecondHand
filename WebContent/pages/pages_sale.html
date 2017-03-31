@@ -86,7 +86,7 @@
 							<ul class="weui-uploader__files" id="uploaderFiles">
 								<li id="show_screen_1" class="weui-uploader__file" style="border:1px solid #d9d9d9; background-size:contain; position:relative;overflow:hidden;"> 
 								<canvas id="mycanvas" width="75px" height="75px"></canvas>
-                               <canvas id="tempcanvas" width="480px" height="640px" style="position:absolute;left:300px;top:0; "></canvas>
+                               <canvas id="tempcanvas" width="159px" height="159px" style="position:absolute;left:300px;top:0; "></canvas>
 								
 							</ul>
 							<div class="weui-uploader__input-box">
@@ -197,7 +197,7 @@ function changeBG()
 		}
 		img.onload=function()
 		{
-			tempcontext.drawImage(img, 0, 0, 480, 640);
+			tempcontext.drawImage(img, 0, 0, 159, 159);
 			context.drawImage(img, 0, 0, 77, 77);
 
 		}

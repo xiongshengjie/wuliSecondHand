@@ -8,9 +8,9 @@
     <script type="text/javascript" src="../js/details.js"></script>
      <script src="../js/jquery-3.1.1.min.js"></script> 
 </head>
-<body style="display:none">
+<body style="display: none">
     <div class="fir-box">
-        <a class="return-arr" href=""><</a>
+        <a class="return-arr" href="../index.html"><</a>
         <span class="title">商品详情</span>
         <input id="collection" type="image" src="../img/noselect.png" width="22" height="21" value="collect" onclick="changeImage()">
     </div>
@@ -72,10 +72,10 @@
 		{
             var image = document.getElementById('collection');
             if (image.src.match("noselect")) {
-                image.src = "img/select.png";
+                image.src = "../img/select.png";
                 alert("收藏成功");
             } else {
-                image.src = "img/noselect.png";
+                image.src = "../img/noselect.png";
                 alert("取消收藏");
             }
         }

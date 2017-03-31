@@ -158,8 +158,8 @@ li{
 
 .img_size
 {
-	max-height:85%;
-	max-width:90%
+	max-height:150px;
+	max-width:140px;
 }
 #banner-buy{
 	position: absolute;

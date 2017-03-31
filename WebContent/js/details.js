@@ -33,16 +33,50 @@ window.onload=function()
             //触发弹出层
             $('.show-layer').on('click',  function() 
 			{
-                var layerid = $(this).data('show-layer');
-                showLayer(layerid);
+				var good_id=sessionStorage.goods_id;
+				$.ajax(
+				{
+					type:"GET",
+					url:"../getTel",
+					data:{"id":good_id},
+					dataType:"json",
+					async:false,
+					success: function(data)
+					{
+						
+						var jsonData=eval(data);
+						var userpic=null;
+						var username=null;
+						var whatclass=null;
+						if(jsonData.errCode==1)
+						{
+							window.location.href="login.html";
+							return;
+						}
+						var weChat=jsonData.data.wechat;
+						var qq=jsonData.data.qq;
+						var telNum=jsonData.data.telnum;
+						$("#weChat").text(weChat);
+						$("#qq").text(qq);
+						$("#telnum").text(telNum);
+						
+						
+					}
+				});
+				var layerid = $(this).data('show-layer');
+       			showLayer(layerid);
+                
             });
 
             //点击或者触控弹出层外的半透明遮罩层，关闭弹出层
             $('.hw-overlay').on('click',  function(event) 
 			{
-                if (event.target == this){
+
+                if (event.target == this)
+                {
                     hideLayer();
                 }
+
             });
 
             //按ESC键关闭弹出层

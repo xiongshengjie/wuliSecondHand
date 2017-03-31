@@ -9,7 +9,7 @@ window.onload=function()
 		url:"../personCenter",
 		success:function(data)
 		{
-			alert("data");
+		
 			$("#user-name>span").text(data);
 			$(".user-name").css("margin-left",(-$(".user-name").width()+$("#head>ul").width())/2);
 			$("body").css("display","block");

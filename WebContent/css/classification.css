@@ -119,3 +119,22 @@ li{
 	font-size: 11px;
 	color: #ec4b1f;
 }
+.goods-id
+{
+	display:none;
+}
+.zero_a
+{
+	padding:0;
+	text-decoration:none;
+}
+.zero_a:hover
+{
+	text-decoration:none;
+}
+
+.img_size
+{
+	max-height:150px;
+	max-width:140px;
+}
