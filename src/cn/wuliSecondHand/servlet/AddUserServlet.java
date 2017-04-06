@@ -9,23 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.wuliSecondHand.domain.Product;
 import cn.wuliSecondHand.domain.User;
-import cn.wuliSecondHand.exception.FindProductByIdException;
-import cn.wuliSecondHand.service.ProductService;
-import cn.wuliSecondHand.utils.JsonUtils;
+import cn.wuliSecondHand.service.UserService;
 
 /**
- * Servlet implementation class GetTelServlet
+ * Servlet implementation class AddUserServlet
  */
-
-public class GetTelServlet extends HttpServlet {
+@WebServlet("/AddUserServlet")
+public class AddUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetTelServlet() {
+    public AddUserServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,27 +33,19 @@ public class GetTelServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		User u = (User)request.getSession().getAttribute("user");
 		PrintWriter out = response.getWriter();
-		User user = (User) request.getSession().getAttribute("user");
-		if(user==null){
-			out.write("{\"errCode\":1,\"errMsg\":\"没有登录\"}");
-			return;
+		UserService service = new UserService();
+		
+		if(service.findUser(u.getName())!=null){
+			service.editUser(u);
+			out.write("{\"errCode\":0,\"errMsg\":\"修改成功^_^\"}");
 		}else{
-			String id = request.getParameter("id");
-			
-			ProductService service = new ProductService();
-			
-			try {
-				// 调用service层方法，通过id查找商品
-				Product p = service.findProductById(id).getProduct();
-				String json = JsonUtils.toJson(p);
-				out.write("{\"errCode\":0,\"data\":"+json+"}");
-
-			} catch (FindProductByIdException e) {
-				e.printStackTrace();
-			}
-			return;
+			service.addUser(u);
+			out.write("{\"errCode\":0,\"errMsg\":\"保存成功^_^\"}");
 		}
+		
+		return;
 	}
 
 	/**

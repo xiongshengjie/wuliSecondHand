@@ -32,9 +32,39 @@ public class User implements Serializable{
 	 * 电话号码
 	 */
 	private String telnum;
+	/**
+	 * 学院
+	 */
+	private String institute;
+	/**
+	 * 班级
+	 */
+	private String classes;
+	/**
+	 * 电话号码
+	 */
+	private String grade;
 	
 	
 	
+	public String getInstitute() {
+		return institute;
+	}
+	public void setInstitute(String institute) {
+		this.institute = institute;
+	}
+	public String getClasses() {
+		return classes;
+	}
+	public void setClasses(String classes) {
+		this.classes = classes;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
 	public String getWechat() {
 		return wechat;
 	}

@@ -9,6 +9,7 @@
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  
   <filter>
     <filter-name>adminPrivilegeFilter</filter-name>
     <filter-class>cn.wuliSecondHand.filter.AdminPrivilegeFilter</filter-class>
@@ -45,7 +46,6 @@
     <servlet-name>AddProductServlet</servlet-name>
     <url-pattern>/addProduct</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>PersonCenterServlet</servlet-name>
     <servlet-class>cn.wuliSecondHand.servlet.PersonCenterServlet</servlet-class>
@@ -54,24 +54,31 @@
     <servlet-name>PersonCenterServlet</servlet-name>
     <url-pattern>/personCenter</url-pattern>
   </servlet-mapping>
-
-	<servlet>
-		<servlet-name>GetClassServlet</servlet-name>
-		<servlet-class>cn.wuliSecondHand.servlet.GetClassServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>GetClassServlet</servlet-name>
-		<url-pattern>/getClass</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>GetTelServlet</servlet-name>
-		<servlet-class>cn.wuliSecondHand.servlet.GetTelServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>GetTelServlet</servlet-name>
-		<url-pattern>/getTel</url-pattern>
-	</servlet-mapping>
+  <servlet>
+    <servlet-name>GetClassServlet</servlet-name>
+    <servlet-class>cn.wuliSecondHand.servlet.GetClassServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetClassServlet</servlet-name>
+    <url-pattern>/getClass</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GetTelServlet</servlet-name>
+    <servlet-class>cn.wuliSecondHand.servlet.GetTelServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetTelServlet</servlet-name>
+    <url-pattern>/getTel</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>AddUserServlet</servlet-name>
+    <servlet-class>cn.wuliSecondHand.servlet.AddUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddUserServlet</servlet-name>
+    <url-pattern>/addUser</url-pattern>
+  </servlet-mapping>
   
   <servlet>
     <servlet-name>ListProductServlet</servlet-name>

@@ -1,7 +1,6 @@
 package cn.wuliSecondHand.domain;
 
 import java.io.Serializable;
-import java.security.Timestamp;
 
 public class Product implements Serializable{
 	/**

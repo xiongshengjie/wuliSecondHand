@@ -49,7 +49,7 @@ public class ShowProductByPageServlet extends HttpServlet {
 		
 		String username = null;
 		
-		if (request.getAttribute("type")!=null) {
+		if (request.getParameter("type")!=null) {
 			User user = (User) request.getSession().getAttribute("user");
 			username = user.getName();
 		}

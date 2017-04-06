@@ -4,8 +4,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 import cn.wuliSecondHand.dao.ProductDao;
+import cn.wuliSecondHand.dao.UserDao;
+import cn.wuliSecondHand.domain.DetailBean;
 import cn.wuliSecondHand.domain.PageBean;
 import cn.wuliSecondHand.domain.Product;
+import cn.wuliSecondHand.domain.User;
 import cn.wuliSecondHand.exception.AddProductException;
 import cn.wuliSecondHand.exception.FindProductByIdException;
 import cn.wuliSecondHand.exception.ListProductException;
@@ -63,13 +66,35 @@ public class ProductService {
 	}
 
 	// 根据id查找商品
-	public Product findProductById(String id) throws FindProductByIdException {
+	public DetailBean findProductById(String id) throws FindProductByIdException {
+		Product p = new Product();
+		DetailBean d = new DetailBean();
 		try {
-			return dao.findProductById(id);
+			p = dao.findProductById(id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new FindProductByIdException("根据ID查找商品失败");
 		}
+		if(p!=null){
+			UserDao udao = new UserDao();
+			User u = new User();
+			try {
+				u = udao.findUser(p.getUser());
+				if(u==null){
+					u.setName(p.getUser());
+				}
+				u.setPassword(null);
+				u.setQq(null);
+				u.setWechat(null);
+				u.setTelnum(null);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			d.setProduct(p);
+			d.setUser(u);
+		}
+		return d;
 	}
 
 	// 多条件查询
