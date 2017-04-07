@@ -66,6 +66,7 @@ public class ProductService {
 	}
 
 	// 根据id查找商品
+	@SuppressWarnings("null")
 	public DetailBean findProductById(String id) throws FindProductByIdException {
 		Product p = new Product();
 		DetailBean d = new DetailBean();
@@ -88,7 +89,6 @@ public class ProductService {
 				u.setWechat(null);
 				u.setTelnum(null);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			d.setProduct(p);
