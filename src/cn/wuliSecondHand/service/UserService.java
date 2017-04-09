@@ -9,7 +9,7 @@ import cn.wuliSecondHand.domain.User;
 
 public class UserService {
 	
-	private UserDao dao;
+	private UserDao dao = new UserDao();
 	
 	public void addUser(User u) {
 		try {
@@ -32,15 +32,14 @@ public class UserService {
 		}
 	}
 	
-	public User findUser(String name){
+	public User findUser(String name) {
 		
 		User u = null;
 		try {
 			u = dao.findUser(name);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("查找失败");
+			System.out.println("查找用户失败");
 		}
 		return u;
 	}

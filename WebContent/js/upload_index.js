@@ -101,7 +101,7 @@ function needUpload()
 	var lastBoxTop=$lastBox.offset().top+Math.floor($lastBox.outerHeight()*2/3);
 	var scrollTop=$(window).scrollTop(); //滚动条滚动的高度
 	var dH=$(window).height();  //浏览器的高度
-	return (lastBoxTop<scrollTop+dH)?true:false;
+	return (lastBoxTop<dH+scrollTop)?true:false;
 	
 }
 function createObj(imgurl,price,title,flag,id)  //flag用来判断a 标签应该加main-rignt 还是main-left flag%2=0代表左边，flag%2=1代表右边

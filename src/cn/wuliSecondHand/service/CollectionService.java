@@ -1,6 +1,7 @@
 package cn.wuliSecondHand.service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.wuliSecondHand.dao.CollectionDao;
@@ -39,7 +40,7 @@ public class CollectionService {
 	@SuppressWarnings("null")
 	public List<Product> findCollection(String name) {
 		List<Collection> idList = null;
-		List<Product> pList =null;
+		List<Product> pList = new ArrayList<Product>();
 		try {
 			idList = dao.findCollection(name);
 		} catch (SQLException e) {

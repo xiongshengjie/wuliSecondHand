@@ -21,6 +21,10 @@ public class User implements Serializable{
 	 */
 	private String password;
 	/**
+	 * 昵称
+	 */
+	private String nickname;
+	/**
 	 * 微信
 	 */
 	private String wechat;
@@ -47,6 +51,12 @@ public class User implements Serializable{
 	
 	
 	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public String getInstitute() {
 		return institute;
 	}

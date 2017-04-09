@@ -78,10 +78,11 @@ public class ProductService {
 		}
 		if(p!=null){
 			UserDao udao = new UserDao();
-			User u = new User();
+			User u = null;
 			try {
 				u = udao.findUser(p.getUser());
 				if(u==null){
+					u = new User();
 					u.setName(p.getUser());
 				}
 				u.setPassword(null);

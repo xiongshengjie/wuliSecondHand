@@ -4,25 +4,24 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.wuliSecondHand.domain.User;
 import cn.wuliSecondHand.service.UserService;
+import cn.wuliSecondHand.utils.JsonUtils;
 
 /**
- * Servlet implementation class AddUserServlet
+ * Servlet implementation class findUserServlet
  */
-@WebServlet("/AddUserServlet")
-public class AddUserServlet extends HttpServlet {
+public class FindUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddUserServlet() {
+    public FindUserServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,27 +30,19 @@ public class AddUserServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
 		User u = (User)request.getSession().getAttribute("user");
-		String nickname = request.getParameter("name");
-		String institute = request.getParameter("xueyuan");
-		String grade = request.getParameter("grade");
-		String classes = request.getParameter("classes");
-		u.setNickname(nickname);
-		u.setInstitute(institute);
-		u.setGrade(grade);
-		u.setClasses(classes);
 		PrintWriter out = response.getWriter();
 		UserService service = new UserService();
+		
+		User getu =  service.findUser(u.getName());
 
-		if (service.findUser(u.getName()) != null) {
-			service.editUser(u);
-			response.sendRedirect("pages\\personalData.html");
+		
+		if(getu == null){
+			out.write("{\"errCode\":1,\"errMsg\":\"未设置个人信息-_-\"}");
 			return;
-		} else {
-			service.addUser(u);
-			response.sendRedirect("pages\\personalData.html");
+		}else {
+			out.write("{\"errCode\":0,\"user\":"+JsonUtils.toJson(getu)+"}");
 			return;
 		}
 	}

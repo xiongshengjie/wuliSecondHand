@@ -46,7 +46,11 @@ public class DeleteProductServlet extends HttpServlet {
 		ProductService service = new ProductService();
 		// 调用service完成添加商品操作
 		service.deleteProduct(id);
-		response.getWriter().write("下架成功");
+		if(request.getParameter("type").equals("del")){
+			response.getWriter().write("{\"errCode\":0,\"errMsg\":\"下架成功^_^\"}");
+			return;
+		}
+
 		response.sendRedirect(request.getContextPath() + "/listProduct");
 		return;
 	}

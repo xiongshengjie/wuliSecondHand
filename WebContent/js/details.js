@@ -1,7 +1,43 @@
 // detail.js code by 田盛前
 
+
+//点击收藏
+	 function changeImage() 
+			{
+				//alert(55);
+				var good_id=sessionStorage.goods_id;
+					$.ajax(
+					{
+						type:"GET",
+						url:"../addCollection",
+						data:{"id":good_id},
+						dataType:"json",
+						async:false,
+						success: function(data)
+						{
+							var image = document.getElementById('collection');
+				            if (image.src.match("noselect")) 
+				            {
+				                image.src = "../img/select.png";
+				                alert("收藏成功");
+				            } 
+				            else 
+				            {
+				                image.src = "../img/noselect.png";
+				                alert("取消收藏");
+				            }
+								
+						}
+					});
+	            
+	        }
+
+
+
 window.onload=function()
 {
+	
+
 		
 		//点击弹出联系方式列表
         $(function()
@@ -45,9 +81,6 @@ window.onload=function()
 					{
 						
 						var jsonData=eval(data);
-						var userpic=null;
-						var username=null;
-						var whatclass=null;
 						if(jsonData.errCode==1)
 						{
 							window.location.href="login.html";
@@ -99,33 +132,35 @@ window.onload=function()
 			{
 				var jsonData=eval(data);
 				var userpic=null;
-				var username=null;
-				var whatclass=null;
-				var issuetime=jsonData.pushtime;
+				var username=jsonData.user.nickname;
+				if(username==null){
+					username = jsonData.user.name;
+				}
+				var whatclass=jsonData.user.grade+" "+jsonData.user.classes;
+
+				var issuetime=jsonData.product.pushtime;
+				var pricename=jsonData.product.isbargin=="on"?"一口价":"可协商";
+				var price="￥"+jsonData.product.price;
+				var goods_name=jsonData.product.title;
+				var imgurl=jsonData.product.imgurl;
+				var schoolarea=jsonData.product.schoolarea;
+				var description=jsonData.product.description;
 				
-				var weChat=jsonData.wechat;
-				var qq=jsonData.qq;
-				var telNum=jsonData.telnum;
-				var pricename=jsonData.isbargin=="on"?"一口价":"可协商";
-				var price="￥"+jsonData.price;
-				var goods_name=jsonData.title;
-				var imgurl=jsonData.imgurl;
-				var schoolarea=jsonData.schoolarea;
-				var description=jsonData.description;
-				
+				$(".sec-box>.username").text(username);
+				$(".sec-box>.whatclass").text(whatclass);
+				$(".sec-box>.issuetime").text(issuetime);
 				$(".sec-box>.pricename").text(pricename);
 				$(".sec-box>.price").text(price);
-				$(".sec-box>.issuetime").text(issuetime);
+
 				$(".thi-box>.goods-name").text(goods_name);
 				var imgTag=$("<img>").addClass("product img-responsive").attr("src","..//"+imgurl).insertAfter($(".thi-box>.goods-name"));
 				$(imgTag).width($(window).width()*0.8);
 				$(".thi-box>.address>.xiaoqu").text(schoolarea);
 				$(".thi-box>.intro-product>.intro-text").text(description);
 				
-				$("#hw-layer>.hw-layer-wrap #qq").text(qq);
-				$("#hw-layer>.hw-layer-wrap #weChat").text(weChat);
-				$("#hw-layer>.hw-layer-wrap #telnum").text(telNum);
 				$("body").css("display","block");
 			}
-		})
+		});
+		
+		
 }
