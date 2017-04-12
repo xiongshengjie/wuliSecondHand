@@ -41,7 +41,7 @@ window.onload=function()
 			
 	    }
     }
-	//加载第一次
+	
 	xmlhttp.open("GET","../showProductByPage?currentPage="+currentPage+"&type=personCenter",false);
 	xmlhttp.send(null);
 
@@ -51,11 +51,12 @@ window.onload=function()
 	{
 		if(needUpload())    //下拉到最下
 		{
-			currentPage=$(".main>div").length/6+1;  
+			currentPage=$("#main-sale>a").length/6+1;
 			var Int_number=/^[0-9]*[1-9][0-9]*$/;
 			if(Int_number.test(currentPage))
 			{	
 				xmlhttp.open("GET","../showProductByPage?currentPage="+currentPage+"&type=personCenter",false);
+				
 				xmlhttp.send(null);
 			}
 		}
@@ -65,7 +66,7 @@ window.onload=function()
 //该功能函数需要更改
 	function needUpload()
 	{
-		var $lastBox=$(".main>div").last();//获得最后一个物品展示的div对象
+		var $lastBox=$("#main-sale>a").last();//获得最后一个物品展示的a对象
 		var lastBoxTop=$lastBox.offset().top+Math.floor($lastBox.outerHeight()*2/3);
 		var scrollTop=$(window).scrollTop(); //滚动条滚动的高度
 		var dH=$(window).height();  //浏览器的高度
@@ -88,29 +89,23 @@ window.onload=function()
 		var Tag_a=$("<a>").addClass("good-out").appendTo($(Tag_div));
 		$(Tag_a).attr("href","#");
 		$(Tag_a).attr("onclick","out('"+id+"')");
-		$(Tag_a).text("下架"); 
+		$(Tag_a).text("下载"); 
 		$(Tag_li_name).text(title);
 		$(Tag_li_price).text("￥"+price);
 		
 	}
-
-	//下架
 	function out(c)
 	{
+		alert("555");
 		$.ajax(
 		{
 			type:"post",
-			data:{"id":c,"type":"del"},
+			data:{"id":c},
 			dataType:"text",
 			url:"../deleteProduct",
 			success:function(data)
 			{
-				var jsonData=eval(data);
-				if(jsonData.errCode==1)
-					{
-						alert("下架失败");
-						return;
-					}_
+				alert(data);
 				$(a).hide();
 			}
 		})

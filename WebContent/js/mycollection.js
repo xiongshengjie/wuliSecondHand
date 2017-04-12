@@ -26,46 +26,46 @@ window.onload=function()
 			var price=new Array();
 			var id=new Array();
 					
-			for(var i=0;i<data.length;i++)
+			for(var i=0;i<data.ps.length;i++)
 			{
-				img.push(data[i].imgurlcompress);
-				title.push(data[i].title);
-				price.push(data[i].price);
-				id.push(data[i].id);
+				img.push(data.ps[i].imgurlcompress);
+				title.push(data.ps[i].title);
+				price.push(data.ps[i].price);
+				id.push(data.ps[i].id);
 			}
 			for(var flag=0;flag<img.length;flag++)
 			{
-				createObj(img[flag],price[flag],title[flag],id[flag])	
+				createObj(img[flag],price[flag],title[flag],flag,id[flag])	
 			}
 			
 	    }
     }
-	//第一次请求
-	xmlhttp.open("GET","../getCollection",false);
+	
+	xmlhttp.open("GET","showProductByPage?currentPage="+currentPage,false);
 	xmlhttp.send(null);
 
 	
 	//需要加载  更新needUpload
-	/*$(window).on('scroll',function()
+	$(window).on('scroll',function()
 	{
 		if(needUpload())    //下拉到最下
 		{
-			currentPage=$(".main>div").length/6+1;
+			currentPage=$("#main-sale>a").length/6+1;
 			var Int_number=/^[0-9]*[1-9][0-9]*$/;
 			if(Int_number.test(currentPage))
 			{	
-				xmlhttp.open("GET","getCollection"+currentPage,false);
+				xmlhttp.open("GET","showProductByPage?currentPage="+currentPage,false);
 				
 				xmlhttp.send(null);
 			}
 		}
-	})*/ 
+	}) 
 }
 	
-
+//该功能函数需要更改
 	function needUpload()
 	{
-		var $lastBox=$(".main>div").last();//获得最后一个物品展示的div对象
+		var $lastBox=$("#main-sale>a").last();//获得最后一个物品展示的a对象
 		var lastBoxTop=$lastBox.offset().top+Math.floor($lastBox.outerHeight()*2/3);
 		var scrollTop=$(window).scrollTop(); //滚动条滚动的高度
 		var dH=$(window).height();  //浏览器的高度
@@ -99,9 +99,9 @@ window.onload=function()
 		$.ajax(
 		{
 			type:"post",
-			data:{"id":c},
+			data:"",
 			dataType:"",
-			url:"../delCollection",
+			url:"",
 			success:function()
 			{
 

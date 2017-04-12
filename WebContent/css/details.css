@@ -7,13 +7,6 @@ body{
             margin:0;
             padding:0;
         }
-        .fir-box{
-            height: 40px;
-            border-bottom: solid 1px #999;
-            text-align: center;
-            background: #fff;
-            overflow: hidden;
-        }
         .return-arr:link,
         .return-arr:visited{
             text-decoration: none;
@@ -33,55 +26,59 @@ body{
             line-height:40px;
             color: #666;
         }
+        .collection{
+            width: 100%;
+        }
         #collection{
             float: right;
-            margin: 10px 4% 0 0 ;
             outline: none;
         }
-        .sec-box{
-            height:70px;
-            position: relative;
+        .first-box{
+            height:90px;
             border-bottom:solid 5px #eee;
         }
         .userpic{
-            position: absolute;
-            left:12px;
-            top:6px;
+            display: block;
+            float: left;
+            margin: 17px 0 17px 20px;
             border:solid 2px #ccc;
             border-radius: 29px;
         }
+        .info-left{
+            float: left;
+            height: 90px;
+            margin-left: 20px;
+        }
+        .info-left > div{
+            margin-top: 10px;
+        }
         .username{
-            position: absolute;
-            left:84px;
-            top:6px;
+            
             color: #666;
             font-size:14px;
         }
         .whatclass{
-            position: absolute;
-            left:84px;
-            top:24px;
             color: #ccc;
             font-size:11px;
         }
         .issuetime{
-            position: absolute;
-            left:84px;
-            top:40px;
             color: #999;
             font-size:14px;
         }
+        .info-right{
+            float: right;
+            height: 90px;
+            margin-right: 20px;
+            text-align: center;
+        }
+        .info-right > div{
+            margin-top: 10px;
+        }
         .pricename{
-            position: absolute;
-            right:30px;
-            top:8px;
             color: #666;
             font-size:11px;
         }
         .price{
-            position: absolute;
-            right:30px;
-            top:40px;
             color: #f33;
             font-size:14px;
         }
@@ -103,7 +100,7 @@ body{
             margin-top: 10px;
         }
         .address>span{
-            color: #999;
+            color: #f33;
             font-size: 14px;
         }
         .intro-product{
@@ -137,55 +134,53 @@ body{
         .contactcss:visited{
             text-decoration: none;
         }
-        .hw-overlay{
-            display:none;
+        #contact-list{
+            display: none;
             position: fixed;
-            top:0;
-            left:0;
-            width:100%;
-            height:100%;
-            background-color: rgba(0,0,0,0.3);
-            z-index:10;
+            bottom: 0;
+            width: 90%;
+            margin: 0 5% 10px 5%;
+            z-index: 10;
         }
-        .hw-layer-wrap{
-            box-sizing:border-box;
-            width:570px;
-            position:absolute;
-            left:50%;top:50%;
-            margin-left:-285px;
-            border-radius:3px;
-            background-color:#fff;
-            box-shadow:1px 2px 4px 0 rgba(0,0,0,0.12);
-            padding:45px 50px;
+        .contact-information{
+            height: 122px;
+            width: 100%;
+            border-radius: 6px;
+            background-color: #fff;
+            filter:alpha(opacity=70);
+            /* CSS3 standard */
+            opacity:0.7;
         }
-        .hwLayer-close{
-            position:absolute;
-            right:20px; top:20px;
-            width:20px; height:20px;
-            cursor:pointer;
-            font-size:20px;
-            color:#ccc;
+        #cancel{
+            height: 40px;
+            width: 100%;
+            margin-top: 5px;
+            border-radius: 6px;
+            background-color: #fff;
+            filter:alpha(opacity=70);
+            /* CSS3 standard */
+            opacity:0.7;
         }
-        .hw-layer-wrap .hw-icon{
-            color:#b4d8f3;
-            font-size:86px;
-            text-align:center;
+        #qq,
+        #weChat{
+            height: 40px;
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            border-bottom: solid 1px #ccc;
         }
-        .hw-layer-wrap h4{
-            margin:5px 0 30px;
-            font-size:24px;
-            color:#383c3e;
+        #telNum,
+        .cancel{
+            height: 40px;
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
         }
-        .hw-layer-wrap p{
-            margin:30px 0;
-            line-height:22px;
-            color:#595d60;
-            text-align:left;
-        }
-
-        @media (max-width:768px){
+        /*@media (max-width:768px){
             .hw-layer-wrap{width:350px; margin-left:-175px; margin-top:-200px; padding:45px 50px; text-align:center;}
         }
         @media (max-width:400px){
             .hw-layer-wrap{width:250px; margin-left:-125px;padding:25px 30px;}
-        }
+        }*/

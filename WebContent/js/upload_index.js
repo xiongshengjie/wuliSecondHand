@@ -2,8 +2,98 @@
 无限下拉，与后台交互获取图片等信息，及时渲染网页
 code by 田盛前
 */
+function needUpload()
+{
+	var $lastBox=$("#main-sale>a").last();//获得最后一个物品展示的a对象
+	var lastBoxTop=$lastBox.offset().top+Math.floor($lastBox.outerHeight()*2/3);
+	var scrollTop=$(window).scrollTop(); //滚动条滚动的高度
+	var dH=$(window).height();  //浏览器的高度
+	return (lastBoxTop<scrollTop+dH)?true:false;
+	
+}
+function createObj(imgurl,price,title,flag,id)  //flag用来判断a 标签应该加main-rignt 还是main-left flag%2=0代表左边，flag%2=1代表右边
+{
+	var $main_sale=$('#main-sale');
+	if(flag%2==1)  //1=左边
+	{
+		var Tag_a=$('<a>').addClass("goods-list main-right col-xs-6 zero_a").appendTo($main_sale);  //a标签
+	}
+	else
+	{
+		var Tag_a=$('<a>').addClass("goods-list main-left col-xs-6 zero_a").appendTo($main_sale);
+	}
+	var Tag_img=$('<img>').addClass("center-block img_size").appendTo($(Tag_a)); //创建图片
+	Tag_img.attr('src',imgurl);
+	var Tag_ul=$('<ul>').addClass("goods-detial").appendTo($(Tag_a));
+	var Tag_li_name=$('<li>').addClass("goods-name").appendTo($(Tag_ul));
+	var Tag_li_id=$('<li>').addClass("goods-id").appendTo($(Tag_ul));
+	var Tag_li_price=$('<li>').addClass("goods-price").appendTo($(Tag_ul));
+	$(Tag_li_name).text(title);
+	$(Tag_li_id).text(id);
+	$(Tag_li_price).text(price+"元");
+	
+}
+
+function click_class(class_name)
+{
+	sessionStorage.class_id=class_name;
+	window.location.href="pages\\classification.html";
+}
+function buy() {
+    $("#banner-buy").css({
+      "color": "#f4cf48",
+      "border-bottom": "2px solid #f4cf48",
+    });
+    $("#banner-sale").css({
+      "color": "#999",
+      "border-bottom": "none",
+    });
+    $("#main-buy").css("display", "block");
+    $("#main-sale").css("display", "none");
+
+  };
+  function sale() {
+  $("#banner-sale").css({
+      "color": "#f4cf48",
+      "border-bottom": "2px solid #f4cf48",
+   });
+    $("#banner-buy").css({
+      "color": "#999",
+      "border-bottom": "none",
+    });
+    $("#main-sale").css("display", "block");
+    $("#main-buy").css("display", "none");
+  }
+  function showCancel() 
+  {
+    $("#cancel").css("display", "block");
+  }
+  function cancel() 
+  {
+    $("#cancel").css("display", "none");
+    $("#input").val("");
+  }
 window.onload=function()
 {
+	$(document).on('click','.fabu-icon',function()
+	  {
+	    _show('.publish-bg');
+	    _show('.pub')
+	  });
+	  $(document).on('click','.pub-close',function()
+	  {
+	    _hide('.publish-bg');
+	    _hide('.pub')
+	  });
+	  //发布
+  function _show(ths)
+  {
+    $(ths).show().stop(true,true).animate({'bottom':'0'});
+  }
+  function _hide(ths)
+  {
+    $(ths).hide().stop(true,true).animate({'bottom':'-20px'});;
+  }
 	var currentPage=1;//表示加载数据的页数
 	//首页加载
 	var xmlhttp;  //存放xhr对象
@@ -18,13 +108,6 @@ window.onload=function()
 		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		xmlhttp1=new ActiveXObject("Microsoft.XMLHTTP");
 
-	}
-	xmlhttp1.onreadystatechange=function()
-	{
-		if(xmlhttp.readyState==4&&xmlhttp.status==200)
-		{
-			
-		}
 	}
 	xmlhttp.onreadystatechange=function()   //xhr对象状态改变时（即后台已经开始处理或者处理完毕）一次传递处理6个对象
 	{
@@ -59,8 +142,6 @@ window.onload=function()
 					})
 	    }
     }
-	xmlhttp1.open("GET","showProductByPage?currentPage="+currentPage,false);
-	xmlhttp1.send(null);
 	
 	xmlhttp.open("GET","showProductByPage?currentPage="+currentPage,false);
 	xmlhttp.send(null);
@@ -82,54 +163,6 @@ window.onload=function()
 		}
 	}) 
 }
-	
-/*$(window).on('scroll',function()
-			{
-				if(needUpload())    //下拉到最下
-				{
-					for(var flag=0;flag<6;flag++)
-					{
-						createObj("MockData/images/相机.png",5000,"商品名称",flag)	
-					}
-				}
-				//uploadIndexPg(img,title,price);  
-			})*/
 
-function needUpload()
-{
-	var $lastBox=$("#main-sale>a").last();//获得最后一个物品展示的a对象
-	var lastBoxTop=$lastBox.offset().top+Math.floor($lastBox.outerHeight()*2/3);
-	var scrollTop=$(window).scrollTop(); //滚动条滚动的高度
-	var dH=$(window).height();  //浏览器的高度
-	return (lastBoxTop<dH+scrollTop)?true:false;
-	
-}
-function createObj(imgurl,price,title,flag,id)  //flag用来判断a 标签应该加main-rignt 还是main-left flag%2=0代表左边，flag%2=1代表右边
-{
-	var $main_sale=$('#main-sale');
-	if(flag%2==1)  //1=左边
-	{
-		var Tag_a=$('<a>').addClass("goods-list main-right col-xs-6 zero_a").appendTo($main_sale);  //a标签
-	}
-	else
-	{
-		var Tag_a=$('<a>').addClass("goods-list main-left col-xs-6 zero_a").appendTo($main_sale);
-	}
-	var Tag_img=$('<img>').addClass("center-block img_size").appendTo($(Tag_a)); //创建图片
-	Tag_img.attr('src',imgurl);
-	var Tag_ul=$('<ul>').addClass("goods-detial").appendTo($(Tag_a));
-	var Tag_li_name=$('<li>').addClass("goods-name").appendTo($(Tag_ul));
-	var Tag_li_id=$('<li>').addClass("goods-id").appendTo($(Tag_ul));
-	var Tag_li_price=$('<li>').addClass("goods-price").appendTo($(Tag_ul));
-	$(Tag_li_name).text(title);
-	$(Tag_li_id).text(id);
-	$(Tag_li_price).text(price+"元");
-	
-}
 
-function click_class(class_name)
-{
-	sessionStorage.class_id=class_name;
-	window.location.href="pages\\classification.html";
-}
 

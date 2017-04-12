@@ -4,25 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>商品详情</title>
+    <script type="text/javascript" src="../js/clipboard.min.js"></script>
+    <script src="../js/jquery-3.1.1.min.js"></script> 
     <link rel="stylesheet" type="text/css" href="../css/details.css">
-         <script src="../js/jquery-3.1.1.min.js"></script> 
     <script type="text/javascript" src="../js/details.js"></script>
+    
+     
 </head>
-<body style="display: none">
-    <div class="fir-box">
-        <a class="return-arr" href="../index.html"><</a>
-        <span class="title">商品详情</span>
-        <input id="collection" type="image" src="../img/noselect.png" width="22" height="21" value="collect" onclick="changeImage()">
-    </div>
-    <div class="sec-box">
+<body style="display: none;">
+    <div class="first-box">
         <img class="userpic" src="../img/userpic.png" width="54" height="54">
-        <span class="username">小二郎</span>
-        <span class="whatclass">计算机学院大一</span>
-        <span class="issuetime">一天前发布</span>
-        <span class="pricename">一口价</span>
-        <span class="price">￥100</span>
+        <div class="info-left">
+            <div class="username">小二郎</div>
+            <div class="whatclass">计算机学院大一</div>
+            <div class="issuetime">一天前发布</div>
+        </div>
+        <div class="info-right">
+            <div class="pricename">一口价</div>
+            <div class="price">￥100</div>
+            <div class="collection">
+                <input id="collection" type="image" src="../img/noselect.png" width="22" height="21" value="collect">
+            </div>
+        </div>
     </div>
-    <div class="thi-box">
+    <div class="second-box">
         <div class="goods-name">
             商品名称
         </div>
@@ -39,31 +44,36 @@
                 （清真式）、酥皮芋泥月饼（潮汕、福建）、蛋黄酥、绿豆椪（台湾）等</p>
         </div>
     </div>
-    <a id="contact" class="contactcss show-layer" data-show-layer="hw-layer" role="button">
+        <a id="contact" class="contactcss show-layer" role="button">
         联系卖家
     </a>
-    <div class="hw-overlay" id="hw-layer">
-        <div class="hw-layer-wrap">
-            <span class="hwLayer-close"></span>
-            <div>
-                <div class="hw-icon"></div>
-                <div>
-                    <p>
-                        <span class="sale-wx">微信:</span><span id="weChat">无</span>
-                    </p>
-                    <p>
-                        <span class="sale-qq">QQ:</span><span id="qq">无</span>
-                    </p>
-                    <p>
-                        <span class="sale-message">短信:</span><span id="telnum">无</span>
-                    </p>
-                    <button class="hwLayer-ok">确 定</button>
-                    <button class="hwLayer-cancel">取 消</button>
-                </div>
-            </div>
+    <div id="contact-list">
+        <div class="contact-information">
+            <input type="button" id="qq" value="QQ" data-clipboard-text="QQ" onclick="click_btn(this)"></input>
+            <input type="button" id="weChat" data-clipboard-text="weChat" value="微信" onclick="click_btn(this)"></input>
+            <input type="button" id="telNum" data-clipboard-text="telNum" value="短信" onclick="click_btn(this)"></input>
         </div>
-    </div>
+        <div id="cancel">
+            <input type="button" class="cancel" value="取消"></input>
+        </div>
+        </div>
 
-    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script>
+	
+        //点击添加或取消收藏
+        function changeImage() 
+		{
+            var image = document.getElementById('collection');
+            if (image.src.match("noselect")) {
+                image.src = "../img/select.png";
+                alert("收藏成功");
+            } else {
+                image.src = "../img/noselect.png";
+                alert("取消收藏");
+            }
+        }
+		
+		
+    </script>
 </body>
 </html>
