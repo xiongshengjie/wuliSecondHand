@@ -1,55 +1,47 @@
 // detail.js code by 田盛前
 
 
-function click_btn(o)
-{
+function click_btn(o) {
 	var good_id = sessionStorage.goods_id
-	$.ajax(
-	{
-		type:"GET",
-		url:"../getTel",
-		data:{"id":good_id},
-		dataType:"json",
-		async:false,
-		success: function(data)
-		{
-						
-			var jsonData=eval(data);
-			if(jsonData.errCode==1)
-			{
+	$.ajax({
+		type : "post",
+		url : "../getTel",
+		data : {
+			"id" : good_id
+		},
+		dataType : "json",
+		success : function(data) {
+			var jsonData = eval(data);
+			alert("555");
+			if (jsonData.errCode == 0) {
+				var weChatD = jsonData.data.wechat;
+				var qqD = jsonData.data.qq;
+				var telNumD = jsonData.data.telnum;
+
+				var clipboard = new Clipboard(o);
+				if ($(o).attr("id") == "weChat") {
+					o.dataset.clipboardText = weChatD;
+				}
+				if ($(o).attr("id") == "qq") {
+					o.dataset.clipboardText = qqD;
+				}
+				if ($(o).attr("id") == "telNum") {
+					o.dataset.clipboardText = telNumD;
+				}
+
+				clipboard.on('success', function(e) {
+					alert("已复制到粘贴板!");
+				});
+
+				clipboard.on('error', function(e) {
+					$(o).val(o.dataset.clipboardText);
+					alert("复制失败,请手动复制!");
+				});
+
+			}else{
 				window.location.href="login.html";
 				return;
 			}
-			var weChatD=jsonData.wechat;
-			var qqD=jsonData.qq;
-			var telNumD=jsonData.telnum;
-
-			var clipboard = new Clipboard(o);
-			if($(o).attr("id")=="weChat")
-			{
-				o.dataset.clipboardText=weChatD;
-			}
-			if($(o).attr("id")=="qq")
-			{
-				o.dataset.clipboardText=qqD;
-			}
-			if($(o).attr("id")=="telNum")
-			{
-				o.dataset.clipboardText=telNumD;
-			}
-			
-			clipboard.on('success', function(e) 
-			{
-			 	alert("已复制到粘贴板!");
-			});
-
-			clipboard.on('error', function(e) 
-			{
-				$(o).val(o.dataset.clipboardText);
-				alert("复制失败,请手动复制!");
-			});
-						
-						
 		}
 	});
 }
