@@ -1,6 +1,5 @@
 window.onload=function()
 {
-	//$("body").css("display","block");
 	$.ajax(
 	{
 		type:"get",
@@ -11,8 +10,8 @@ window.onload=function()
 		{
 		
 			$("#user-name>span").text(data);
-			$(".user-name").css("margin-left",(-$(".user-name").width()+$("#head>ul").width())/2);
 			$("body").css("display","block");
+			$(".user-name").css("margin-left",(-$(".user-name").width()+$("#head>ul").width())/2);
 			
 		}
 	})

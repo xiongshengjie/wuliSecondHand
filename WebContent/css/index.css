@@ -296,7 +296,7 @@ li{
 	z-index:99;display:none;
 }
 .pub{
-	position:absolute;bottom:-20px;width:100%;height:100%;display:none;
+	position:fixed;bottom:-20px;width:100%;height:100%;display:none;
 	z-index:100;
 }
 .pub .pub-close{

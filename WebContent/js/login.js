@@ -17,7 +17,7 @@ $(window).on("load",function()
 			login_form.password.focus();
 			return;
 		}
-			
+		$("#wait").css("left",0);
 		$.ajax
 		({
 			url:"../login",         //请求地址

@@ -1,12 +1,12 @@
 window.onload=function()
 {
+	document.title=sessionStorage.class_id;
 	var currentPage=1;//表示加载数据的页数
 	//首页加载
 	var xmlhttp;  //存放xhr对象
 	if(window.XMLHttpRequest)  //如果浏览器支持
 	{
 		xmlhttp=new XMLHttpRequest();
-		xmlhttp1=new XMLHttpRequest();
 	}
 	else   //如果不支持
 	{
@@ -43,7 +43,7 @@ window.onload=function()
 					var goods_id_Tag=$(this).find("ul").find("li")[1];
 					var goods_id=$(goods_id_Tag).text();
 					sessionStorage.goods_id=goods_id;
-					window.location.href="pages\\details.html";
+					window.location.href="details.html";
 				})
 	    }
     }

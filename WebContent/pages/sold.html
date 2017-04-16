@@ -8,6 +8,7 @@
         <link href="../css/yellow.css" rel="stylesheet">
         <script src="../js/jquery-3.1.1.min.js"></script>
         <script src="../js/addImage.js" type="text/javascript"></script>
+        <script src="../js/sold.js" type="text/javascript"></script>
         <script src="../js/icheck.min.js" type="text/javascript"></script>
     </head>
     <body>
@@ -71,5 +72,18 @@
         </div>
         <input id="issue"  type="button" name="issue" value="确认发布">
     </form>
+    <div id="wait">
+        <table style="height: 100%;width: 100%;">
+            <tbody>
+            <tr>
+                <td><img src="../img/wait.gif" style="width: 100%;"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        $("#wait").height($(window).height());
+        $("#wait").width($(window).width());
+    </script>
     </body>
 </html>

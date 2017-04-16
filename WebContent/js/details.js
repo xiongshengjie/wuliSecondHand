@@ -112,11 +112,12 @@ window.onload=function()
 		//点击添加或取消收藏
         document.getElementById('collection').onclick = function changeImage() 
 		{
-           var good_id=sessionStorage.goods_id;
+            var good_id=sessionStorage.goods_id;
+
 				$.ajax(
 				{
 					type:"GET",
-					url:"../getTel",
+					url:"../addCollection",
 					data:{"id":good_id},
 					dataType:"json",
 					async:false,
@@ -158,30 +159,42 @@ window.onload=function()
 			{
 				var jsonData=eval(data);
 				var userpic=null;
-				var username=null;
-				var whatclass=null;
-				var issuetime=jsonData.pushtime;
 				
-				var weChat=jsonData.wechat;
-				var qq=jsonData.qq;
-				var telNum=jsonData.telnum;
-				var pricename=jsonData.isbargin=="on"?"一口价":"可协商";
-				var price="￥"+jsonData.price;
-				var goods_name=jsonData.title;
-				var imgurl=jsonData.imgurl;
-				var schoolarea=jsonData.schoolarea;
-				var description=jsonData.description;
+				var username=jsonData.user.nickname;
+				if(username==null){
+					username = jsonData.product.user;
+				}
+				var whatclass=jsonData.user.grade+" "+jsonData.user.classes;
+
+				var issuetime=jsonData.product.pushtime;
+				var pricename=jsonData.product.isbargin=="on"?"一口价":"可协商";
+				var price="￥"+jsonData.product.price;
+				var goods_name=jsonData.product.title;
+
+				var imgurl=jsonData.product.imgurlcompress;
+				var img_arr=[];
+				img_arr=imgurl.split("|");//取出多张图片
+
+				var schoolarea=jsonData.product.schoolarea;
+				var description=jsonData.product.description;
+				$(".first-box .username").text(username);
+				$(".first-box .whatclass").text(whatclass);
+				$(".first-box .issuetime").text(issuetime);
+
+				$(".first-box .pricename").text(pricename);
+				$(".first-box .price").text(price);
 				
-				$(".first-box>.pricename").text(pricename);
-				$(".first-box>.price").text(price);
-				$(".first-box>.issuetime").text(issuetime);
-				$(".second-box>.goods-name").text(goods_name);
-				var imgTag=$("<img>").addClass("product img-responsive").attr("src","..//"+imgurl).insertAfter($(".second-box>.goods-name"));
-				$(imgTag).width($(window).width()*0.8);
-				$(".second-box>.address>.xiaoqu").text(schoolarea);
-				$(".second-box>.intro-product>.intro-text").text(description);
+				$(".second-box .goods-name").text(goods_name);
+				//添加多张图片
+				for(var i=0;i<img_arr.length-1;i++)
+				{
+					var imgTag=$("<img>").addClass("product img-responsive").attr("src","..//"+img_arr[i]).insertAfter($(".second-box>.goods-name"));
+					$(imgTag).width($(window).width()*0.8);
+				}
 				
-				//这个部分的js需要修改下
+				$(".second-box .address .xiaoqu").text(schoolarea);
+				$(".second-box .intro-product .intro-text").text(description);
+				
 				$("body").css("display","block");
 			}
 		})

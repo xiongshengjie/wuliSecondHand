@@ -74,3 +74,10 @@ body{
         textarea{
             -webkit-appearance: none;
         }
+#wait
+{
+    position: fixed;
+    left: -100%;
+    top: 0;
+    background: rgb(253,253,253);
+}

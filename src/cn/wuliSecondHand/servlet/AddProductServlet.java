@@ -31,6 +31,7 @@ import cn.wuliSecondHand.service.ProductService;
 import cn.wuliSecondHand.utils.Base64ToImage;
 import cn.wuliSecondHand.utils.FileUploadUtils;
 import cn.wuliSecondHand.utils.IdUtils;
+import cn.wuliSecondHand.utils.ImgCompressUtils;
 import net.sf.json.JSONObject;
 
 /**
@@ -48,6 +49,7 @@ public class AddProductServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 创建javaBean,将上传数据封装.
+		String allimgurl="",allcomimgurl="";
 		Product p = new Product();
 		Map<String, String> map = new HashMap<String, String>();
 		// 封装商品id
@@ -101,12 +103,15 @@ public class AddProductServlet extends HttpServlet {
 					}
 
 					String imgurl = imgurl_parent + "/" + randomName;
-					map.put("imgurl", imgurl);
+					allimgurl += imgurl + "|";
 					OutputStream ops = new FileOutputStream(new File(parentDir, randomName));
 					IOUtils.copy(item.getInputStream(), ops);
 					randomName = FileUploadUtils
-							.generateRandonFileName(fileName);
+							.generateRandonFileNameJpg();
 					imgurlcompress = imgurl_parent + "/" + randomName;
+					allcomimgurl += imgurlcompress + "|";
+					String apppath = request.getRealPath("");
+					ImgCompressUtils.compress(apppath + imgurl, apppath + imgurlcompress);
 					ops.flush();
 					ops.close();
 					item.delete();
@@ -114,15 +119,16 @@ public class AddProductServlet extends HttpServlet {
 
 			}
 			
-			boolean flag = Base64ToImage.GenerateImage(map.get("img"), imgurlcompress, request);
+			map.put("imgurl", allimgurl);
+			map.put("imgurlcompress", allcomimgurl);
 			
 			User user = (User)request.getSession().getAttribute("user");
 			map.put("user", user.getName());
 			
-			if(flag){
-				map.put("imgurlcompress", imgurlcompress);
-			}
+
 		} catch (FileUploadException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 

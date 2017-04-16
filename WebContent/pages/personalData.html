@@ -8,21 +8,21 @@
 </head>
 <body style="display: none;">
 	<header>
-		<a class="return" href="personcenter.html"><</a>
-		<div class="title">个人资料</div>
+		<!--<a class="return" href="personcenter.html"><</a> -->
+		<div class="title" style="height: 15px;"></div>
 		<img class="user-pic" src="../img/userpic.png">
 		<div class="change">点击更换头像</div>
 	</header>
 	<div class="main-container">
-	<form>
+	<form action="../addUser" method="post">
 		<ul>
 			<li>
 				<span>昵称</span>
-				<input id="name" value="0121410880312">
+				<input id="name" name="name" value="">
 			</li>
-			<li>
+			<li id="xueyuan">
 				<span>学院</span>
-				<select>
+				<select name="xueyuan">
 					<option>材料科学与工程学院</option>
 					<option>交通学院</option>
 					<option>管理学院</option>
@@ -46,18 +46,18 @@
 					<option>国际教育学院</option>
 				</select>
 			</li>
-			<li>
+			<li id="grade">
 				<span>年级</span>
-				<select>
+				<select name="grade">
 					<option>大一</option>
 					<option>大二</option>
 					<option>大三</option>
 					<option>大四</option>
 				</select>
 			</li>
-			<li>
+			<li id="classes">
 				<span>兴趣</span>
-				<select>
+				<select name="classes">
 					<option>二手书籍</option>
 					<option>校园出行</option>
 					<option>运动健身</option>
