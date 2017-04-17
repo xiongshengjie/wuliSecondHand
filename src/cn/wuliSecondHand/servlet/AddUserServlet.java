@@ -1,8 +1,6 @@
 package cn.wuliSecondHand.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,16 +40,15 @@ public class AddUserServlet extends HttpServlet {
 		u.setInstitute(institute);
 		u.setGrade(grade);
 		u.setClasses(classes);
-		PrintWriter out = response.getWriter();
 		UserService service = new UserService();
 
 		if (service.findUser(u.getName()) != null) {
 			service.editUser(u);
-			response.sendRedirect("pages\\personalData.html");
+			response.sendRedirect("pages\\personcenter.html");
 			return;
 		} else {
 			service.addUser(u);
-			response.sendRedirect("pages\\personalData.html");
+			response.sendRedirect("pages\\personcenter.html");
 			return;
 		}
 	}

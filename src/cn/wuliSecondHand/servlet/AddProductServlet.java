@@ -10,9 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.jws.soap.SOAPBinding.Use;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,17 +26,20 @@ import cn.wuliSecondHand.domain.Product;
 import cn.wuliSecondHand.domain.User;
 import cn.wuliSecondHand.exception.AddProductException;
 import cn.wuliSecondHand.service.ProductService;
-import cn.wuliSecondHand.utils.Base64ToImage;
 import cn.wuliSecondHand.utils.FileUploadUtils;
 import cn.wuliSecondHand.utils.IdUtils;
 import cn.wuliSecondHand.utils.ImgCompressUtils;
-import net.sf.json.JSONObject;
 
 /**
  * 后台系统
  * 用于添加商品的servlet
  */
 public class AddProductServlet extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
