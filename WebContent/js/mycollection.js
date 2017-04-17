@@ -1,4 +1,21 @@
+function out(c)
+	{
 
+		var a = document.getElementById(c);
+		$.ajax(
+		{
+			type:"post",
+			data:{"id":c},
+			dataType:"",
+			url:"../delCollection",
+			success:function()
+			{
+				alert("删除成功!");
+				$(a).hide();
+			}
+		})
+		
+	}
 window.onload=function()
 {
 
@@ -30,7 +47,7 @@ window.onload=function()
 			for(var i=0;i<data.length;i++)
 			{
 				var img_arr=[];
-				img_arr=data.ps[i].imgurlcompress.split("|");
+				img_arr=data[i].imgurlcompress.split("|");
 				img.push(img_arr[0]);
 				title.push(data[i].title);
 				price.push(data[i].price);
@@ -75,22 +92,5 @@ window.onload=function()
 		$(Tag_a).text("删除"); 
 		$(Tag_li_name).text(title);
 		$(Tag_li_price).text("￥"+price);
-		
-	}
-	function out(c)
-	{
-		var a = document.getElementById(c);
-		$.ajax(
-		{
-			type:"post",
-			data:{"id":c},
-			dataType:"",
-			url:"../delCollection",
-			success:function()
-			{
-				alert("删除成功!");
-				$(a).hide();
-			}
-		})
 		
 	}

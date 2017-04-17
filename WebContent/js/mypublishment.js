@@ -1,3 +1,26 @@
+function out(c)
+	{
+		var a = document.getElementById(c);
+		$.ajax(
+		{
+			type:"post",
+			data:{"id":c,"type":"del"},
+			dataType:"json",
+			url:"../deleteProduct",
+			success:function(data)
+			{
+				var jsonData=eval(data);
+				if(jsonData.errCode==1)
+					{
+						alert("下架失败");
+						return;
+					}
+				alert("下架成功");
+				$(a).hide();
+			}
+		})
+		
+	}
 window.onload=function()
 {
 	
@@ -99,27 +122,5 @@ window.onload=function()
 		$(Tag_a).text("下架");
 		$(Tag_li_name).text(title);
 		$(Tag_li_price).text("￥"+price);
-		
-	}
-	function out(c)
-	{
-		$.ajax(
-		{
-			type:"post",
-			data:{"id":c,"type":"del"},
-			dataType:"text",
-			url:"../deleteProduct",
-			success:function(data)
-			{
-				var jsonData=eval(data);
-				if(jsonData.errCode==1)
-					{
-						alert("下架失败");
-						return;
-					}
-				alert("下架成功");
-				$(a).hide();
-			}
-		})
 		
 	}

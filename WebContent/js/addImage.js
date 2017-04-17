@@ -57,7 +57,7 @@ function quchong(files){
 function filter(files) {
         var arrFiles = [];
         for (var i = 0, file; file = files[i]; i++) {
-            if (file.type.indexOf("image") == 0) {
+            if (file.type.indexOf("image") != -1) {
                 // if (file.size >= 10240000){
                 // 	alert('您这张图片大小过大，应小于1M');	
                 // } else {

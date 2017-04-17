@@ -5,7 +5,15 @@ code by 田盛前
 //判断是否需要加载
 function needUpload()
 {
-	var $lastBox=$("#main-sale>a").last();//获得最后一个物品展示的a对象
+	var $lastBox;
+	if($("#main-buy").css("display")=="none")  //当前显示的sald信息
+	{
+		$lastBox=$("#main-sale>a").last();//获得最后一个物品展示的a对象
+	}
+	if($("#main-buy").css("display")=="block")   //当前显示的buy信息
+	{
+		$lastBox=$("#main-buy>a").last();
+	}
 	var lastBoxTop=$lastBox.offset().top+Math.floor($lastBox.outerHeight()*2/3);
 	var scrollTop=$(window).scrollTop(); //滚动条滚动的高度
 	var dH=$(window).height();  //浏览器的高度
@@ -78,9 +86,8 @@ function buy() {
     });
     $("#main-buy").css("display", "block");
     $("#main-sale").css("display", "none");
-
-  };
-  function sale() {
+}
+function sale() {
   $("#banner-sale").css({
       "color": "#f4cf48",
       "border-bottom": "2px solid #f4cf48",
@@ -91,12 +98,12 @@ function buy() {
     });
     $("#main-sale").css("display", "block");
     $("#main-buy").css("display", "none");
-  }
-  function showCancel() 
+}
+function showCancel() 
   {
     $("#cancel").css("display", "block");
   }
-  function cancel() 
+function cancel() 
   {
     $("#cancel").css("display", "none");
     $("#input").val("");
@@ -116,16 +123,16 @@ window.onload=function()
 	    _hide('.pub')
 	  });
 	  //发布
-   function _show(ths)
-   {
-     $(ths).show().stop(true,true).animate({'bottom':'0'});
-   }
-   function _hide(ths)
-   {
-     $(ths).hide().stop(true,true).animate({'bottom':'-20px'});;
-   }
+	function _show(ths)
+	   {
+	     $(ths).show().stop(true,true).animate({'bottom':'0'});
+	   }
+	function _hide(ths)
+	{
+	     $(ths).hide().stop(true,true).animate({'bottom':'-20px'});;
+	}
 
-
+	//数据请求
    var currentPage_sale=1;
    var currentPage_buy=1;
    $("#banner-sale").click(function(){ask_sale_info(currentPage_sale,true)});
@@ -161,7 +168,7 @@ window.onload=function()
 			}
 			
 		}
-	}) 
+	}); 
 }
 //请求buy信息
 function ask_buy_info(currentPage,isfirst)
@@ -214,7 +221,7 @@ function ask_buy_info(currentPage,isfirst)
 			})
 	    }
     }
-	xmlhttp.open("GET","showProductByPage?currentPage="+currentPage,false);
+	xmlhttp.open("GET","showProductByPage?currentPage="+currentPage+"&hello=world",false);
 	xmlhttp.send(null);
 	
 }

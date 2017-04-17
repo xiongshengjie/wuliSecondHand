@@ -36,20 +36,23 @@ public class PersonCenterServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		User user = (User)request.getSession().getAttribute("user");
-		
 		PrintWriter out = response.getWriter();
-		UserService service = new UserService();
-		String username = user.getName();
-		User realuser = service.findUser(username);
+		String result = null;
 		
-		String start = username.substring(0, 7);
-		String end = username.substring(11, 13);
-		String result = start + "****" + end;
-		
-		if(realuser != null){
-			result = realuser.getNickname();
+		if(user == null){
+			return;
+		}else{
+			UserService service = new UserService();
+			String username = user.getName();
+			User realuser = service.findUser(username);
+			String start = username.substring(0, 7);
+			String end = username.substring(11, 13);
+			result = start + "****" + end;
+			if(realuser != null){
+				result = realuser.getNickname();
+			}
 		}
-		
+
 		out.write(result);
 		
 		return;
