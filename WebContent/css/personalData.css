@@ -57,24 +57,27 @@ ul li{
 	margin-bottom: 15px;
 	padding-left: 5px;
 	list-style: none;
-	font-size: 14px;
+	font-size: 16px;
 	color: #777;
 	border-bottom: 1px solid #999;
 }
 #name{
 	margin-left: 50px;
 	border:none;
-	font-size: 14px;
+	font-size: 16px;
 	color: #777;
 }
 select{
+	background: #fff;
 	width: 180px;
 	margin-left: 50px;
 	appearance:none;
   	-moz-appearance:none;
+  	-o-appearance:none;
+  	-ms-appearance:none;
   	-webkit-appearance:none;
   	border:none;
-  	font-size: 14px;
+  	font-size: 16px;
 	color: #777;
 }
 .button{
@@ -88,6 +91,6 @@ select{
 	background-color: #f5cf39;
 	border-radius: 5px;
 	text-align: center;
-	font-size: 17px;
+	font-size: 16px;
 	color: #fff;
 }

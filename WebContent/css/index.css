@@ -185,8 +185,9 @@ li{
 
 .img_size
 {
-	max-height:150px;
-	max-width:140px;
+	height:80%;
+	width:80%;
+	margin-top: 1%;
 }
 #banner-buy{
 	position: absolute;
@@ -235,6 +236,7 @@ li{
 	position:absolute;
 	bottom:2px;
 	padding:1px;
+	margin-bottom: 1%;
 }
 .goods-name{	
 	overflow: hidden;

@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import com.mysql.jdbc.Field;
 import com.sun.image.codec.jpeg.*;
 
 import javax.imageio.ImageIO;

@@ -65,6 +65,7 @@ function filter(files) {
                 // }	
                 arrFiles.push(file);		
             } else {
+                alert(file.type);
                 alert('您选择的不是图片。');	
             }
         }
