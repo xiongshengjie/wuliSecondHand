@@ -126,6 +126,12 @@ public class AddProductServlet extends HttpServlet {
 			User user = (User)request.getSession().getAttribute("user");
 			map.put("user", user.getName());
 			
+			if(map.get("hello")=="world"){
+				map.put("flag", "1");
+			}else{
+				map.put("flag", "0");
+			}
+			
 
 		} catch (FileUploadException e) {
 			e.printStackTrace();

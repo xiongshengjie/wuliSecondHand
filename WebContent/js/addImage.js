@@ -56,18 +56,20 @@ function quchong(files){
 }
 function filter(files) {
         var arrFiles = [];
-        for (var i = 0, file; file = files[i]; i++) {
-            if (file.type.indexOf("image") != -1) {
+        for (var i = 0, file; file = files[i]; i++) 
+        {
+            if (file.type.indexOf("image") == -1&&file.type)//file type属性存在 
+            {
+                alert('您选择的不是图片。');
+                return arrFiles; 
+            }
+
                 // if (file.size >= 10240000){
                 // 	alert('您这张图片大小过大，应小于1M');	
                 // } else {
                 // 	arrFiles.push(file);	
                 // }	
-                arrFiles.push(file);		
-            } else {
-                alert(file.type);
-                alert('您选择的不是图片。');	
-            }
+            arrFiles.push(file);
         }
         return arrFiles;
 }

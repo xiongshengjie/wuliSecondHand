@@ -63,9 +63,19 @@ public class Product implements Serializable{
 	 * 发布时间
 	 */
 	private String pushtime;
+	/**
+	 * 发布类型
+	 */
+	private String flag;
 	
 	
 	
+	public String getFlag() {
+		return flag;
+	}
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
 	public String getImgurlcompress() {
 		return imgurlcompress;
 	}

@@ -152,7 +152,7 @@ public class ProductDao {
 	public List<Product> findBookByName(int currentPage, int currentCount,
 			String searchfield) throws SQLException {
 		//根据名字模糊查询图书
-		String sql = "SELECT * FROM product WHERE name LIKE '%"+searchfield+"%' LIMIT ?,?";
+		String sql = "SELECT * FROM product WHERE title LIKE '%"+searchfield+"%' LIMIT ?,?";
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
 //		//用于分页查询的数据
 //		Object obj = new Object[] { (currentPage - 1) * currentCount, currentCount };

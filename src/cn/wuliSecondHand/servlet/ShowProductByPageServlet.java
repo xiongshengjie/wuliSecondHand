@@ -53,11 +53,19 @@ public class ShowProductByPageServlet extends HttpServlet {
 			User user = (User) request.getSession().getAttribute("user");
 			username = user.getName();
 		}
-
-		// 4.调用service，完成获取当前页分页Bean数据.
+		
+		String condition = request.getParameter("condition");
+		
 		ProductService service = new ProductService();
-		PageBean bean = service.findProductByPage(currentPage, currentCount,
-				category,username);
+		PageBean bean = null;
+		
+		if(condition!=null&&"".equals(condition)){
+			bean = service.findBookByName(currentPage, currentCount, condition);
+		}else{
+			// 4.调用service，完成获取当前页分页Bean数据.
+			bean = service.findProductByPage(currentPage, currentCount,
+					category,username);
+		}
 
 		// 将数据存储到request范围，跳转到index.html页面展示
 		String json = JsonUtils.toJson(bean);

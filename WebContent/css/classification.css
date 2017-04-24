@@ -74,7 +74,6 @@ li{
 	width: 100%;
 	padding: 0;
 	padding-top: 8px;
-	background-color: #eee;
 }
 #main-sale div{
 	padding: 0;
@@ -84,7 +83,6 @@ li{
 	width: 100%;
 	padding: 0;
 	padding-top: 8px;
-	background-color: #eee;
 }
 #main-buy div{
 	padding: 0;
@@ -135,6 +133,7 @@ li{
 
 .img_size
 {
-	max-height:150px;
-	max-width:140px;
+	margin-top: 1%;
+	height:80%;
+	width:80%;
 }
