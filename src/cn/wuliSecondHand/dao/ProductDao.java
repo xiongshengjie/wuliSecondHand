@@ -55,26 +55,32 @@ public class ProductDao {
 
 	// 获取当前页数据
 	public List<Product> findByPage(int currentPage, int currentCount,
-			String category,String username) throws SQLException {
+			String category,String username ,String world) throws SQLException {
 		// 要执行的sql语句
 		String sql = null;
 		// 参数
 		Object[] obj = null;
 		// 如果category不为null,代表是按分类查找
 		if (!"全部商品".equals(category)) {
-			sql = "select * from product  where category=? limit ?,?";
+			sql = "select * from product  where category=? ";
 			obj = new Object[] { category, (currentPage - 1) * currentCount,
 					currentCount, };
 		} else {
 			if(username==null){
-				sql = "select * from product  limit ?,?";
+				sql = "select * from product where 1=1  ";
 				obj = new Object[] { (currentPage - 1) * currentCount,
 						currentCount, };
 			}else{
-				sql = "select * from product where user=? limit ?,?";
+				sql = "select * from product where user=? ";
 				obj = new Object[] { username,(currentPage - 1) * currentCount,
 						currentCount, };
 			}
+		}
+		
+		if("world".equals(world)){
+			sql += " AND flag=1 limit ?,?";
+		}else{
+			sql += " limit ?,?";
 		}
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
 		return runner.query(sql, new BeanListHandler<Product>(Product.class),
@@ -150,9 +156,14 @@ public class ProductDao {
 
 	//前台，用于搜索框根据书名来模糊查询相应的商品
 	public List<Product> findBookByName(int currentPage, int currentCount,
-			String searchfield) throws SQLException {
+			String searchfield , String world) throws SQLException {
 		//根据名字模糊查询图书
-		String sql = "SELECT * FROM product WHERE title LIKE '%"+searchfield+"%' LIMIT ?,?";
+		String sql = "SELECT * FROM product WHERE title LIKE '%"+searchfield+"%'  ";
+		if("world".equals(world)){
+			sql  += " AND flag=1 LIMIT ?,?";
+		}else{
+			sql += " LIMIT ?,?";
+		}
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
 //		//用于分页查询的数据
 //		Object obj = new Object[] { (currentPage - 1) * currentCount, currentCount };
@@ -162,7 +173,7 @@ public class ProductDao {
 
 	//前台搜索框，根据书名模糊查询出的图书总数量
 	public int findBookByNameAllCount(String searchfield) throws SQLException {
-		String sql = "SELECT COUNT(*) FROM product WHERE name LIKE '%"+searchfield+"%'";
+		String sql = "SELECT COUNT(*) FROM product WHERE title LIKE '%"+searchfield+"%'";
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
 		//查询出满足条件的总数量，为long类型
 		Long count = (Long)runner.query(sql, new ScalarHandler());

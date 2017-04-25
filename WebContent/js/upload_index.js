@@ -41,6 +41,8 @@ function createObj(imgurl,price,title,flag,id)  //flag用来判断a 标签应该
 	$(Tag_li_name).text(title);
 	$(Tag_li_id).text(id);
 	$(Tag_li_price).text(price+"元");
+	//让图片显示尽量成一个正方形
+	$(".goods-list").height($(".goods-list").width()*1.3);
 	
 }
 function createObj_buy(imgurl,price,title,flag,id)  //flag用来判断a 标签应该加main-rignt 还是main-left flag%2=0代表左边，flag%2=1代表右边

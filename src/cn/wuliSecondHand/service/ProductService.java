@@ -40,7 +40,7 @@ public class ProductService {
 
 	// 分页操作
 	public PageBean findProductByPage(int currentPage, int currentCount,
-			String category, String username) {
+			String category, String username , String world) {
 		PageBean bean = new PageBean();
 		// 封装每页显示数据条数
 		bean.setCurrentCount(currentCount);
@@ -55,7 +55,7 @@ public class ProductService {
 		try {
 			// 获取当前页数据
 			List<Product> ps = dao.findByPage(currentPage, currentCount,
-					category,username);
+					category,username,world);
 			bean.setPs(ps);
 
 		} catch (SQLException e) {
@@ -123,7 +123,7 @@ public class ProductService {
 
 	//前台，用于搜索框根据书名来模糊查询相应的图书
 	public PageBean findBookByName(int currentPage, int currentCount,
-			String searchfield) {
+			String searchfield , String world) {
 		PageBean bean = new PageBean();
 		// 封装每页显示数据条数
 		bean.setCurrentCount(currentCount);
@@ -133,7 +133,7 @@ public class ProductService {
 		bean.setSearchfield(searchfield);
 		try {
 			
-			List<Product> ps = dao.findBookByName(currentPage,currentCount,searchfield);
+			List<Product> ps = dao.findBookByName(currentPage,currentCount,searchfield,world);
 			bean.setPs(ps);
 			return bean;
 		} catch (SQLException e) {
