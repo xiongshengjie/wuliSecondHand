@@ -126,8 +126,11 @@ public class AddProductServlet extends HttpServlet {
 			User user = (User)request.getSession().getAttribute("user");
 			map.put("user", user.getName());
 			
-			if(map.get("hello")=="world"){
-				map.put("flag", "1");
+			if("world".equals(map.get("hello"))){
+				double x = (Double.parseDouble(map.get("price1"))+Double.parseDouble(map.get("price2")))/2;
+				map.put("price", String.valueOf(x));
+				map.put("flag", String.valueOf(x-Double.parseDouble(map.get("price1"))));
+				
 			}else{
 				map.put("flag", "0");
 			}

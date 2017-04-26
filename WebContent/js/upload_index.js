@@ -198,6 +198,7 @@ function ask_buy_info(currentPage,isfirst)
 			var jsonData=xmlhttp.responseText;
 			//解析json数据
 			var data=JSON.parse(jsonData);
+
 			var img=new Array();
 			var title=new Array();
 			var price=new Array();
@@ -205,7 +206,15 @@ function ask_buy_info(currentPage,isfirst)
 					
 			for(var i=0;i<data.ps.length;i++)
 			{
-				img.push(data.ps[i].imgurlcompress);
+				/*img.push(data.ps[i].imgurlcompress);
+				title.push(data.ps[i].title);
+				price.push(data.ps[i].price);
+				id.push(data.ps[i].id);*/
+
+				var img_arr=[];
+				img_arr=data.ps[i].imgurlcompress.split("|");
+				
+				img.push(img_arr[0]);
 				title.push(data.ps[i].title);
 				price.push(data.ps[i].price);
 				id.push(data.ps[i].id);

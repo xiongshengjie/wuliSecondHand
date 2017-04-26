@@ -66,6 +66,7 @@ $("#issue").click(function()
         //显示缓冲页面
         $("#wait").css("left","0");
         var form = new FormData(document.getElementById("upform"));
+        
         $.ajax({
             url:"../addProduct",         //请求地址
             type: "POST",                       //请求方式

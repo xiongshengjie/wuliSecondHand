@@ -19,10 +19,10 @@ public class ProductDao {
 	// 添加商品
 	public void addProduct(Product p) throws SQLException {
 
-		String sql = "insert into product values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into product values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
 		runner.update(sql, p.getId(), p.getTitle(), p.getPrice(),
-				p.getCategory(), p.getImgurl(), p.getImgurlcompress(),p.getUser(),p.getDescription(), p.getSchoolarea(), p.getIsbargain(),p.getWechat(),p.getQq(),p.getTelnum(), p.getIschange(),new Timestamp(System.currentTimeMillis()));
+				p.getCategory(), p.getImgurl(), p.getImgurlcompress(),p.getUser(),p.getDescription(), p.getSchoolarea(), p.getIsbargain(),p.getWechat(),p.getQq(),p.getTelnum(), p.getIschange(),new Timestamp(System.currentTimeMillis()),p.getFlag());
 	}
 
 	// 查找所有商品
@@ -65,23 +65,28 @@ public class ProductDao {
 			sql = "select * from product  where category=? ";
 			obj = new Object[] { category, (currentPage - 1) * currentCount,
 					currentCount, };
+			if("world".equals(world)){
+				sql += " AND flag!=0 limit ?,?";
+			}else{
+				sql += " AND flag=0 limit ?,?";
+			}
 		} else {
 			if(username==null){
 				sql = "select * from product where 1=1  ";
 				obj = new Object[] { (currentPage - 1) * currentCount,
 						currentCount, };
+				if("world".equals(world)){
+					sql += " AND flag!=0 limit ?,?";
+				}else{
+					sql += " AND flag=0 limit ?,?";
+				}
 			}else{
-				sql = "select * from product where user=? ";
+				sql = "select * from product where user=? limit ?,?";
 				obj = new Object[] { username,(currentPage - 1) * currentCount,
 						currentCount, };
 			}
 		}
 		
-		if("world".equals(world)){
-			sql += " AND flag=1 limit ?,?";
-		}else{
-			sql += " limit ?,?";
-		}
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
 		return runner.query(sql, new BeanListHandler<Product>(Product.class),
 				obj);
@@ -160,9 +165,9 @@ public class ProductDao {
 		//根据名字模糊查询图书
 		String sql = "SELECT * FROM product WHERE title LIKE '%"+searchfield+"%'  ";
 		if("world".equals(world)){
-			sql  += " AND flag=1 LIMIT ?,?";
+			sql  += " AND flag!=0 LIMIT ?,?";
 		}else{
-			sql += " LIMIT ?,?";
+			sql += " AND flag=0 LIMIT ?,?";
 		}
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
 //		//用于分页查询的数据

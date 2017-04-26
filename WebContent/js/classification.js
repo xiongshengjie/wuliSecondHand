@@ -5,7 +5,7 @@ window.onload=function()
    var currentPage_buy=1;
    $("#banner-sale").click(function(){ask_sale_info(currentPage_sale,true)});
    $("#banner-sale").click();//一开始进入sale，所以需要加载一次
-   //ask_sale_info(currentPage)
+
    $("#banner-buy").click(function(){ask_buy_info(currentPage_buy,true)});
 
 	
@@ -132,10 +132,13 @@ function ask_buy_info(currentPage,isfirst)
 			var title=new Array();
 			var price=new Array();
 			var id=new Array();
-					
+			//获取参数		
 			for(var i=0;i<data.ps.length;i++)
 			{
-				img.push(data.ps[i].imgurlcompress);
+				var img_arr=[];
+				img_arr=data.ps[i].imgurlcompress.split("|");
+				img.push(img_arr[0]);
+				
 				title.push(data.ps[i].title);
 				price.push(data.ps[i].price);
 				id.push(data.ps[i].id);

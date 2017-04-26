@@ -57,10 +57,11 @@ window.onload=function()
 				title.push(data.ps[i].title);
 				price.push(data.ps[i].price);
 				id.push(data.ps[i].id);
+				
 			}
 			for(var flag=0;flag<img.length;flag++)
 			{
-				createObj(img[flag],price[flag],title[flag],id[flag])	
+				createObj(img[flag],price[flag],title[flag],id[flag]);	
 			}
 			
 	    }
@@ -68,34 +69,7 @@ window.onload=function()
 	
 	xmlhttp.open("GET","../showProductByPage?currentPage="+currentPage+"&type=personCenter",false);
 	xmlhttp.send(null);
-
-	
-	//需要加载  更新needUpload
-	/*$(window).on('scroll',function()
-	{
-		if(needUpload())    //下拉到最下
-		{
-			currentPage=$(".main>a").length/6+1;
-			var Int_number=/^[0-9]*[1-9][0-9]*$/;
-			if(Int_number.test(currentPage))
-			{	
-				xmlhttp.open("GET","../showProductByPage?currentPage="+currentPage+"&type=personCenter",false);
-				xmlhttp.send(null);
-			}
-		}
-	}) */
 }
-	
-//该功能函数需要更改
-	/*function needUpload()
-	{
-		var $lastBox=$(".main>div").last();//获得最后一个物品展示的div对象
-		var lastBoxTop=$lastBox.offset().top+Math.floor($lastBox.outerHeight()*2/3);
-		var scrollTop=$(window).scrollTop(); //滚动条滚动的高度
-		var dH=$(window).height();  //浏览器的高度
-		return (lastBoxTop<scrollTop+dH)?true:false;
-		
-	}*/
 
 	function createObj(imgurl,price,title,id)  //flag用来判断a 标签应该加main-rignt 还是main-left flag%2=0代表左边，flag%2=1代表右边
 	{
