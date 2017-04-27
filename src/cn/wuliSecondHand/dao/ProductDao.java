@@ -160,7 +160,7 @@ public class ProductDao {
 	}
 
 	//前台，用于搜索框根据书名来模糊查询相应的商品
-	public List<Product> findBookByName(int currentPage, int currentCount,
+	public List<Product> findProductByName(int currentPage, int currentCount,
 			String searchfield , String world) throws SQLException {
 		//根据名字模糊查询图书
 		String sql = "SELECT * FROM product WHERE title LIKE '%"+searchfield+"%'  ";

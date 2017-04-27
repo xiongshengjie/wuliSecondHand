@@ -73,7 +73,13 @@ function createObj_buy(imgurl,price,title,flag,id)  //flag用来判断a 标签�
 function click_class(class_name)
 {
 	sessionStorage.class_id=class_name;
+	sessionStorage.search_t="";
 	window.location.href="pages\\classification.html";
+	if(arguments[1]==100)
+		{
+		sessionStorage.search_t=class_name;
+		sessionStorage.class_id="";
+		}
 }
 
 
@@ -133,7 +139,13 @@ window.onload=function()
 	{
 	     $(ths).hide().stop(true,true).animate({'bottom':'-20px'});;
 	}
-
+	//搜索按钮
+	$(".search-button").click(function()
+		{
+			var temp=$("#search_val").val();
+			//alert(temp);
+			click_class(temp,100);//表示搜索id
+		});
 	//数据请求
    var currentPage_sale=1;
    var currentPage_buy=1;
@@ -217,7 +229,7 @@ function ask_buy_info(currentPage,isfirst)
 				img.push(img_arr[0]);
 				title.push(data.ps[i].title);
 				//修改可接受价格区间
-				var ac_price=(data.ps[i].price-data.ps[i].flag)+"-"+(data.ps[i].price+data.ps[i].flag);
+				var ac_price=(parseFloat(data.ps[i].price)-parseFloat(data.ps[i].flag))+"-"+(parseFloat(data.ps[i].price)+parseFloat(data.ps[i].flag));
 				price.push(ac_price);
 			
 				
@@ -228,7 +240,7 @@ function ask_buy_info(currentPage,isfirst)
 			{
 				createObj_buy(img[flag],price[flag],title[flag],flag,id[flag]);	
 			}
-			$("#main-buy>a").click(function()  //问题 怎么获取点击的a下面的 goods-id
+			$("#main-buy>a").click(function()  //点击具体的物品
 			{
 				var goods_id_Tag=$(this).find("ul").find("li")[1];
 				var goods_id=$(goods_id_Tag).text();

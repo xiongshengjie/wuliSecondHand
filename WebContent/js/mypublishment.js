@@ -63,7 +63,7 @@ window.onload=function()
 				}
 				else  //求购信息
 				{
-					var ac_price=(data.ps[i].price-data.ps[i].flag)+"-"+(data.ps[i].price+data.ps[i].flag);
+					var ac_price=(parseFloat(data.ps[i].price)-parseFloat(data.ps[i].flag))+"-"+(parseFloat(data.ps[i].price)+parseFloat(data.ps[i].flag));
 					price.push(ac_price);
 				}
 

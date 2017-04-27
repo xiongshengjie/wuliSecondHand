@@ -61,3 +61,24 @@ body{
             color: #999;
             line-height:42px;
         }
+    #issue{
+    display: block;
+    width: 130px;
+    height: 35px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    background-color: #f4ce49;
+    }
+    input{
+    margin: 0;
+    padding: 0;
+    border: none;
+    appearance:none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    -o-appearance:none;
+    -webkit-appearance:none;
+    font-size: 16px;
+    }

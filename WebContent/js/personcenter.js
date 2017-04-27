@@ -2,7 +2,7 @@ window.onload=function()
 {
 	$.ajax(
 	{
-		type:"get",
+		type:"post",
 		data:"",
 		dataType:"text",
 		url:"../personCenter",

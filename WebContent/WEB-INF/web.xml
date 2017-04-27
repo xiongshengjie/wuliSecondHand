@@ -22,6 +22,7 @@
     <url-pattern>/pages/pages_sale02.html</url-pattern>
     <url-pattern>/pages/personalData.html</url-pattern>
     <url-pattern>/pages/sold.html</url-pattern>
+    <url-pattern>/pages/announcement.html</url-pattern>
   </filter-mapping>
   <servlet>
     <servlet-name>LoginServlet</servlet-name>

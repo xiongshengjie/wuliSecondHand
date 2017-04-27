@@ -43,7 +43,7 @@ public class ShowProductByPageServlet extends HttpServlet {
 
 		String _category = request.getParameter("category");
 
-		if (_category != null) {
+		if (_category != null && "".equals(category)) {
 			category = _category;
 		}
 		
@@ -62,7 +62,7 @@ public class ShowProductByPageServlet extends HttpServlet {
 		PageBean bean = null;
 		
 		if(!(condition==null || "".equals(condition))){
-			bean = service.findBookByName(currentPage, currentCount, condition , world);
+			bean = service.findProductByName(currentPage, currentCount, condition , world);
 		}else{
 			// 4.调用service，完成获取当前页分页Bean数据.
 			bean = service.findProductByPage(currentPage, currentCount,

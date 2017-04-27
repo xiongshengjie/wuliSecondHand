@@ -141,7 +141,7 @@ function ask_buy_info(currentPage,isfirst)
 				
 				title.push(data.ps[i].title);
 				//修改可接受价格区间
-				var ac_price=(data.ps[i].price-data.ps[i].flag)+"-"+(data.ps[i].price+data.ps[i].flag);
+				var ac_price=(parseFloat(data.ps[i].price)-parseFloat(data.ps[i].flag))+"-"+(parseFloat(data.ps[i].price)+parseFloat(data.ps[i].flag));
 				price.push(ac_price);
 				
 				id.push(data.ps[i].id);
@@ -159,7 +159,7 @@ function ask_buy_info(currentPage,isfirst)
 			})
 	    }
     }
-	xmlhttp.open("GET","../showProductByPage?currentPage="+currentPage+"&hello=world"+"&category="+sessionStorage.class_id,false);
+	xmlhttp.open("GET","../showProductByPage?currentPage="+currentPage+"&hello=world"+"&category="+sessionStorage.class_id+"&condition="+sessionStorage.search_t,false);
 	xmlhttp.send(null);
 	
 }
@@ -217,6 +217,6 @@ function ask_sale_info(currentPage,isfirst)
 			})
 	    }
     }
-	xmlhttp.open("GET","../showProductByPage?currentPage="+currentPage+"&category="+sessionStorage.class_id,false);
+	xmlhttp.open("GET","../showProductByPage?currentPage="+currentPage+"&category="+sessionStorage.class_id+"&condition="+sessionStorage.search_t,false);
 	xmlhttp.send(null);
 }

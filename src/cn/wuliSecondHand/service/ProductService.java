@@ -122,7 +122,7 @@ public class ProductService {
 	}
 
 	//前台，用于搜索框根据书名来模糊查询相应的图书
-	public PageBean findBookByName(int currentPage, int currentCount,
+	public PageBean findProductByName(int currentPage, int currentCount,
 			String searchfield , String world) {
 		PageBean bean = new PageBean();
 		// 封装每页显示数据条数
@@ -133,7 +133,7 @@ public class ProductService {
 		bean.setSearchfield(searchfield);
 		try {
 			
-			List<Product> ps = dao.findBookByName(currentPage,currentCount,searchfield,world);
+			List<Product> ps = dao.findProductByName(currentPage,currentCount,searchfield,world);
 			bean.setPs(ps);
 			return bean;
 		} catch (SQLException e) {

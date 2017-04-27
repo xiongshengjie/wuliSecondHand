@@ -176,7 +176,7 @@ window.onload=function()
 				}
 				else
 				{
-					t_price=(jsonData.product.price-jsonData.product.flag)+"-"+(jsonData.product.price+jsonData.product.flag);
+					t_price=(parseFloat(jsonData.product.price)-parseFloat(jsonData.product.flag))+"-"+(parseFloat(jsonData.product.price)+parseFloat(jsonData.product.flag));
 				}
 				var price="￥"+t_price;
 

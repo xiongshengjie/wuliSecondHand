@@ -31,6 +31,7 @@ $(window).on("load",function()
 				{
 					window.alert("您输入的用户名或密码有错！");
 					login_form.username.focus();
+					$("#wait").css("left","-100%");
 					return;
 				}
 				else
@@ -42,7 +43,7 @@ $(window).on("load",function()
 				
 			},
 			fail: function (status) 
-			{}
+			{$("#wait").css("left","-100%");}
 		});//ajax
    })//click event
 })

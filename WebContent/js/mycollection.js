@@ -57,7 +57,7 @@ window.onload=function()
 				}
 				else  //求购信息
 				{
-					var ac_price=(data[i].price-data[i].flag)+"-"+(data[i].price+data[i].flag);
+					var ac_price=(parseFloat(data[i].price)-parseFloat(data[i].flag))+"-"+(parseFloat(data[i].price)+parseFloat(data[i].flag));
 					price.push(ac_price);
 				}
 				

@@ -85,11 +85,13 @@ $("#issue").click(function()
                 if(json.errCode==1)
                 {
                     alert(json.errMsg);
+                    $("#wait").css("left","-100%");
                 }
             },
             fail: function (status) 
             {
                 alert("失败");
+                $("#wait").css("left","-100%");
             }
         });
     });
