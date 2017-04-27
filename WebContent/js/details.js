@@ -168,7 +168,18 @@ window.onload=function()
 
 				var issuetime=jsonData.product.pushtime;
 				var pricename=jsonData.product.isbargin=="on"?"一口价":"可协商";
-				var price="￥"+jsonData.product.price;
+				
+				var t_price=0;
+				if(jsonData.product.flag==0)
+				{
+					t_price=jsonData.product.price;
+				}
+				else
+				{
+					t_price=(jsonData.product.price-jsonData.product.flag)+"-"+(jsonData.product.price+jsonData.product.flag);
+				}
+				var price="￥"+t_price;
+
 				var goods_name=jsonData.product.title;
 
 				var imgurl=jsonData.product.imgurlcompress;

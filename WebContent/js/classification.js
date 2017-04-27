@@ -140,7 +140,10 @@ function ask_buy_info(currentPage,isfirst)
 				img.push(img_arr[0]);
 				
 				title.push(data.ps[i].title);
-				price.push(data.ps[i].price);
+				//修改可接受价格区间
+				var ac_price=(data.ps[i].price-data.ps[i].flag)+"-"+(data.ps[i].price+data.ps[i].flag);
+				price.push(ac_price);
+				
 				id.push(data.ps[i].id);
 			}
 			for(var flag=0;flag<img.length;flag++)

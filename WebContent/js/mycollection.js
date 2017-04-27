@@ -50,7 +50,18 @@ window.onload=function()
 				img_arr=data[i].imgurlcompress.split("|");
 				img.push(img_arr[0]);
 				title.push(data[i].title);
-				price.push(data[i].price);
+				//修改
+				if(data[i].flag==0)//出售信息
+				{
+					price.push(data[i].price);
+				}
+				else  //求购信息
+				{
+					var ac_price=(data[i].price-data[i].flag)+"-"+(data[i].price+data[i].flag);
+					price.push(ac_price);
+				}
+				
+				
 				id.push(data[i].id);
 			}
 			for(var flag=0;flag<img.length;flag++)
