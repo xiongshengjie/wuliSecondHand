@@ -60,17 +60,19 @@ ul li{
 	font-size: 16px;
 	color: #777;
 	border-bottom: 1px solid #999;
+	overflow: hidden;
 }
 #name{
-	margin-left: 50px;
+	width: 60%;
+	margin-left: 30px;
 	border:none;
 	font-size: 16px;
 	color: #777;
 }
 select{
 	background: #fff;
-	width: 180px;
-	margin-left: 50px;
+	width: 60%;
+	margin-left: 30px;
 	appearance:none;
   	-moz-appearance:none;
   	-o-appearance:none;
@@ -81,6 +83,7 @@ select{
 	color: #777;
 }
 .button{
+	-webkit-appearance: none;
 	display: block;
 	width: 130px;
 	height: 35px;
@@ -91,6 +94,6 @@ select{
 	background-color: #f5cf39;
 	border-radius: 5px;
 	text-align: center;
-	font-size: 16px;
+	font-size: 18px;
 	color: #fff;
 }

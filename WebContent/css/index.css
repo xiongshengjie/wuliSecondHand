@@ -12,22 +12,26 @@ ul{
 li{
 	list-style: none;
 }
+#topBlank{
+	height: 44px;
+}
 .head{
 	position: relative;
 	width: 100%;
 	height: 44px;
+	padding: 10px 0 10px 0;
 	text-align: center;
 	border-bottom:1px solid #999; 
 	background-color: #f4cf48;
 	font-size: 17px;
 	color: #666;
 }
-.head-return{
+/*.head-return{
 	position: absolute;
 	left: 10px; 
 	bottom: 10px;
 	font-size: 17px;
-}
+}*/
 .swiper-container{
 	width: 100%;
 	height: 180px;
@@ -42,27 +46,28 @@ li{
 	text-align: center;
 }
 .search-box{
-	position: absolute;
-	left: 30px;
-	bottom:10px;
 	width: 78%;
+	margin: 0 auto;
+	padding: 0;
 	height: 23px;
 	border-radius: 3px;
 	background-color: #fff;
 }
 .search-button{
-	float: left;
+	float: right;
 	width: 17px;
 	height: 17px;
 	margin: 3px;
+	padding: 0;
 	border:none;
 	background:url(../MockData/images/放大镜.png)no-repeat;
 	outline: none;
 }
 .search-input{
 	float: left;
-	width: 90%;
+	width: 70%;
 	height: 23px;
+	margin-left: 5px;
 	border:none;
 	font-size: 14px;
 	color: #666;

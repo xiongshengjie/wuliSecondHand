@@ -43,7 +43,7 @@ public class ShowProductByPageServlet extends HttpServlet {
 
 		String _category = request.getParameter("category");
 
-		if (_category != null && "".equals(category)) {
+		if (_category != null && !"".equals(category)) {
 			category = _category;
 		}
 		

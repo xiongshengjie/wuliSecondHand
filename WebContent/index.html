@@ -11,12 +11,13 @@
   <title>首页</title>
 </head>
 <body style="background-color:#eee;">
+  <div id="topBlank" style="display:none;"></div>
 <div class="head">
   <form class="search-box">
-    <input id="search_val" placeholder="搜索一下" class="search-input" onclick="showCancel()"/>
+    <input id="search_val" placeholder="搜索一下" class="search-input" />
     <button type="button" class="search-button"></button>
   </form>
-  <span id="cancel" class="search-cancel" onclick="cancel()">取消</span>
+  <!--<span id="cancel" class="search-cancel" onclick="cancel()">取消</span>-->
 </div>
 <div class="swiper-container">
   <div class="swiper-wrapper">
@@ -175,9 +176,12 @@
 <script src="./js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="./js/swiper-3.4.1.jquery.min.js"></script>
 <script type="text/javascript">
-
-
-  
+  $(function(){
+    $("#search_val").bind("click", function(){
+      $("#topBlank").slideDown();
+      setTimeout(function(){ $("#topBlank").slideUp(); }, 3000);
+    })
+  })
 </script>
 <script type="text/javascript">
   var mySwiper = new Swiper('.swiper-container', 

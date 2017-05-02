@@ -9,34 +9,42 @@ a{text-decoration:none;}
 img{
 border:0px;
 }
+textarea{
+    -webkit-appearance: none;
+}
+input[type=text]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-border-radius:0;
+    border-radius: 0;
+    padding-left: 6px;
+    height: 28px;
+    width: 60%;
+    font-size: 16px;
+    color: #666;
+    border: none;
+    border-left: solid 1px #ccc;
+    outline: none;
+}
 input{
     margin: 0;
     padding: 0;
-    border: none;
-    appearance:none;
-    -moz-appearance:none;
-    -ms-appearance:none;
-    -o-appearance:none;
-    -webkit-appearance:none;
-    font-size: 16px;
-
 }
 .header{
-    height: 30px;
-    padding-left: 5%;
-    line-height: 30px;
+    padding: 6px 0 6px 5%;
     color: #666;
     border-bottom: solid 1px #999;
     background-color: #fff;
 }
 .product-intro{
-    font-size: 16px;
     display: block;
     width: 90%;
     height: 110px;
     padding:6px 5% 0 5%;
+    font-size: 14px;
     line-height: 22px;
     border: none;
+    color: #666;
     outline: none;
     resize: none;
 }
@@ -47,15 +55,15 @@ input{
     margin-left: 4%;
 }
 select{
+    -moz-appearance: none;
+    -ms-progress-appearance: none;
+    -webkit-appearance: none;
+    -webkit-border-radius:0;
+    border-radius: 0; 
     color: #999;
     border: none;
+    border-bottom: solid 1px #999;
     outline: none;
-    appearance:none;
-    -moz-appearance:none;
-    -ms-appearance:none;
-    -o-appearance:none;
-    -webkit-appearance:none;
-    background: #fff;
 }
 .select-xiaoqu{
     margin-left: 3%;
@@ -137,39 +145,37 @@ select{
     background-color: #fff;
     margin-bottom: 15px;
     border-bottom: solid 1px #999;
+    color: #666;
     overflow: hidden;
 }
 .fourth-block > div{
-    height: 30px;
-    padding-left: 4%;
-    line-height: 30px;
+    padding:6px 0 6px 4%;
     border-bottom: solid 1px #eee;
 }
 .fourth-block > div > span,
 .set-price > span{
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
     margin-right: 10px;
-}
-.fourth-block > div:nth-child(n+3) > input,
-.set-price > input,
-.header > input{
-    padding-left: 6px;
-    border: none;
-    border-left: solid 1px #000;
-    outline: none;
 }
 .set-price{
     background-color: #fff;
     margin-bottom: 20px;
     padding: 6px 0 6px 4%;
+    color: #666;
 }
 #issue{
+    -webkit-appearance: none;
     display: block;
     width: 130px;
-    height: 35px;
-    margin: 0 auto;
+    height: 38px;
+    margin: 0 auto 50px auto;
     border: none;
     border-radius: 6px;
     outline: none;
+    color: #fff;
+    font-size: 18px;
     background-color: #f4ce49;
 }
 #wait

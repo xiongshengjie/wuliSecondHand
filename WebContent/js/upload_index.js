@@ -107,16 +107,15 @@ function sale() {
     $("#main-sale").css("display", "block");
     $("#main-buy").css("display", "none");
 }
-function showCancel() 
-  {
-    $("#cancel").css("display", "block");
-  }
-function cancel() 
-  {
-    $("#cancel").css("display", "none");
-    $("#input").val("");
-  }
-
+// function showCancel() 
+//   {
+//     $("#cancel").css("display", "block");
+//   }
+// function cancel() 
+//   {
+//     $("#cancel").css("display", "none");
+//     $("#input").val("");
+//   }
 
 window.onload=function()
 {
@@ -146,6 +145,16 @@ window.onload=function()
 			//alert(temp);
 			click_class(temp,100);//表示搜索id
 		});
+	$("#search_val").keyup(function()
+	{
+		var e=e||window.event;
+		if(e.keyCode==13)
+		{
+			var temp=$("#search_val").val();
+			//alert(temp);
+			click_class(temp,100);//表示搜索id
+		}
+	});
 	//数据请求
    var currentPage_sale=1;
    var currentPage_buy=1;

@@ -1,6 +1,14 @@
 window.onload=function()
 {
-	document.title=sessionStorage.class_id;
+	if(sessionStorage.class_id!="")//代表点击分类
+	{
+		document.title=sessionStorage.class_id;
+	}
+	else  //代表点击搜索
+	{
+		document.title=sessionStorage.search_t;
+	}
+  
    var currentPage_sale=1;
    var currentPage_buy=1;
    $("#banner-sale").click(function(){ask_sale_info(currentPage_sale,true)});

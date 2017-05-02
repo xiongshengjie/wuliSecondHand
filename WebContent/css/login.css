@@ -3,7 +3,7 @@ body{
             padding:0;
             font-family: "Microsoft YaHei UI";
         }
-        .fir-box{
+        /*.fir-box{
             overflow: hidden;
         }
         .return-arr:link,
@@ -17,7 +17,7 @@ body{
             font-family: SimSun;
             font-weight: 900;
             font-size: 30px;
-        }
+        }*/
         .sec-box{
             margin-top: 30px;
             overflow: hidden;
@@ -42,6 +42,7 @@ body{
             margin: 20px 15% 0 15%;
             height: 30px;
             width: 70%;
+            font-size: 14px;
             border-top: none;
             border-left: none;
             border-right: none;
@@ -50,11 +51,13 @@ body{
             outline: none;
         }
         .login-btn{
+            -webkit-appearance: none;
             height: 36px;
             width:70%;
             margin: 50px 15% 0 15%;
             border-radius: 18px;
             border: none;
+            font-size: 18px;
             color: #fff;
             background: #f4ce49;
             outline: none;
