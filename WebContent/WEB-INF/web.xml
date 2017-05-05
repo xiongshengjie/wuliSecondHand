@@ -17,6 +17,14 @@
   <filter-mapping>
     <filter-name>indexFilter</filter-name>
     <url-pattern>/index.html</url-pattern>
+    <url-pattern>/pages/mycollection.html</url-pattern>
+    <url-pattern>/pages/mypublishment.html</url-pattern>
+    <url-pattern>/pages/personcenter.html</url-pattern>
+    <url-pattern>/pages/pages_sale.html</url-pattern>
+    <url-pattern>/pages/pages_sale02.html</url-pattern>
+    <url-pattern>/pages/personalData.html</url-pattern>
+    <url-pattern>/pages/sold.html</url-pattern>
+    <url-pattern>/pages/announcement.html</url-pattern>
   </filter-mapping>
   
   <filter>
@@ -34,6 +42,8 @@
     <url-pattern>/pages/sold.html</url-pattern>
     <url-pattern>/pages/announcement.html</url-pattern>
   </filter-mapping>
+  
+  
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>cn.wuliSecondHand.servlet.LoginServlet</servlet-class>
