@@ -16,6 +16,17 @@ public class DetailBean implements Serializable{
 	 * 产品
 	 */
 	private Product product;
+	/**
+	 * 当前用户是否收藏
+	 */
+	private String iscoll;
+	
+	public String getIscoll() {
+		return iscoll;
+	}
+	public void setIscoll(String iscoll) {
+		this.iscoll = iscoll;
+	}
 	public User getUser() {
 		return user;
 	}

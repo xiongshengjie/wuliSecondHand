@@ -53,7 +53,6 @@ function request_cn(t)
 						alert("卖家未填写电话,请点击其他联系方式");
 						return;
 					}
-					alert("已复制到您的粘贴板!");
 					s=telNumD;
 				}
 			}
@@ -67,6 +66,7 @@ function request_cn(t)
 window.onload=function()
 {
 	//给联系方式的按钮添加clipboard属性
+	//QQ
 	    var clipboard_qq = new Clipboard("#qq", {
         text: function() {
                 return request_cn("qq") ;
@@ -80,7 +80,7 @@ window.onload=function()
         	alert("复制失败!");
         });
 
-
+        //微信
        	var clipboard_weChat = new Clipboard("#weChat", {
         text: function() {
                 return request_cn("weChat");
@@ -94,8 +94,15 @@ window.onload=function()
         	alert("复制失败!");
         });
 
-
-        var clipboard_telNum = new Clipboard("#telNum", {
+        //电话则直接发送短信
+        var telnum=request_cn("telNum");
+        $("#telNum").click(function()
+        {
+        	
+        	$(this).attr("href","sms:"+telnum);
+        	$(this).click();
+        })
+        /*var clipboard_telNum = new Clipboard("#telNum", {
         text: function() {
                 return request_cn("telNum");
             }
@@ -106,7 +113,7 @@ window.onload=function()
 
         clipboard_telNum.on('error', function() {
         	alert("复制失败!");
-        });
+        });*/
 
 
 		//点击添加或取消收藏
@@ -148,6 +155,7 @@ window.onload=function()
 		document.getElementById('cancel').onclick = function () {
 			$("#contact-list").fadeOut();
 		};
+		//加载具体信息
 		var good_id=sessionStorage.goods_id;
 		$.ajax(
 		{
@@ -181,7 +189,12 @@ window.onload=function()
 				var price="￥"+t_price;
 
 				var goods_name=jsonData.product.title;
-
+				var isColl=jsonData.iscoll;
+				if(isColl==1)
+				{
+					var image = document.getElementById('collection');
+						image.src = "../img/select.png";
+				}
 				var imgurl=jsonData.product.imgurlcompress;
 				var img_arr=[];
 				img_arr=imgurl.split("|");//取出多张图片
@@ -208,5 +221,26 @@ window.onload=function()
 				
 				$("body").css("display","block");
 			}
-		})
+		});
+		//更新收藏图标
+		/*$.ajax(
+		{
+			type:"GET",
+			url:"../getCollection",
+			dataType:"json",
+			success:function()
+			{
+				var jsonData=xmlhttp.responseText;
+				var data=JSON.parse(jsonData);
+				for(var i=0;i<data.length;i++)
+				{
+					if(data[i].id==good_id)
+					{
+						var image = document.getElementById('collection');
+						image.src = "../img/select.png";
+					}
+				}
+				
+			}
+		})*/
 }

@@ -8,6 +8,7 @@ import cn.wuliSecondHand.dao.CollectionDao;
 import cn.wuliSecondHand.dao.ProductDao;
 import cn.wuliSecondHand.domain.Collection;
 import cn.wuliSecondHand.domain.Product;
+import cn.wuliSecondHand.domain.User;
 
 public class CollectionService {
 	
@@ -60,6 +61,21 @@ public class CollectionService {
 			}
 			return pList;
 		}
+	}
+	
+	public boolean isCollection(User user , String id) {
+		
+		Collection c = null;
+		try {
+			c = dao.isCollection(user,id);
+			if(c !=null){
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

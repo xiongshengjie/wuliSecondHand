@@ -7,6 +7,7 @@
     <script type="text/javascript" src="../js/clipboard.min.js"></script>
     <script src="../js/jquery-3.1.1.min.js"></script> 
     <link rel="stylesheet" type="text/css" href="../css/details.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <script type="text/javascript" src="../js/details.js"></script>
     
      
@@ -51,7 +52,10 @@
         <div class="contact-information">
             <input type="button"  id="qq" value="QQ"></input>
             <input type="button"  id="weChat" value="微信" ></input>
-            <input type="button"  id="telNum" value="短信" ></input>
+            <!--<input type="button"  id="telNum" value="短信" ></input>-->
+            <a id="telNum" class="btn" href="#">
+                <table style="width: 100%;height: 100%"><tr><td>短信</td></tr></table>
+            </a>
         </div>
         <div id="cancel">
             <input type="button" class="cancel" value="取消"></input>

@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import cn.wuliSecondHand.domain.DetailBean;
 import cn.wuliSecondHand.domain.Product;
+import cn.wuliSecondHand.domain.User;
 import cn.wuliSecondHand.exception.FindProductByIdException;
+import cn.wuliSecondHand.service.CollectionService;
 import cn.wuliSecondHand.service.ProductService;
 import cn.wuliSecondHand.utils.JsonUtils;
 
@@ -28,6 +30,9 @@ public class FindProductByIdServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		
 		ProductService service = new ProductService();
+		CollectionService ser = new CollectionService();
+		
+		User user = (User)request.getSession().getAttribute("user");
 		
 		try {
 			// 调用service层方法，通过id查找商品
@@ -37,6 +42,16 @@ public class FindProductByIdServlet extends HttpServlet {
 			p.setQq(null);
 			p.setWechat(null);
 			p.setTelnum(null);
+			if(user == null){
+				d.setIscoll("0");
+			}else{
+				boolean flag = ser.isCollection(user, id);
+				if(flag){
+					d.setIscoll("1");
+				}else{
+					d.setIscoll("2");
+				}
+			}
 			String json = JsonUtils.toJson(d);
 			response.getWriter().write(json);
 

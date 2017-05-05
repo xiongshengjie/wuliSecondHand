@@ -66,9 +66,9 @@ public class ProductDao {
 			obj = new Object[] { category, (currentPage - 1) * currentCount,
 					currentCount, };
 			if("world".equals(world)){
-				sql += " AND flag!=0 limit ?,?";
+				sql += " AND flag!=0 order by pushtime desc limit ?,? ";
 			}else{
-				sql += " AND flag=0 limit ?,?";
+				sql += " AND flag=0 order by pushtime desc limit ?,? ";
 			}
 		} else {
 			if(username==null){
@@ -76,12 +76,12 @@ public class ProductDao {
 				obj = new Object[] { (currentPage - 1) * currentCount,
 						currentCount, };
 				if("world".equals(world)){
-					sql += " AND flag!=0 limit ?,?";
+					sql += " AND flag!=0 order by pushtime desc limit ?,? ";
 				}else{
-					sql += " AND flag=0 limit ?,?";
+					sql += " AND flag=0 order by pushtime desc limit ?,? ";
 				}
 			}else{
-				sql = "select * from product where user=? limit ?,?";
+				sql = "select * from product where user=? order by pushtime desc limit ?,? ";
 				obj = new Object[] { username,(currentPage - 1) * currentCount,
 						currentCount, };
 			}

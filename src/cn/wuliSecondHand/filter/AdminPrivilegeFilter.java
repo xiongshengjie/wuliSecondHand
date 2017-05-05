@@ -34,33 +34,7 @@ public class AdminPrivilegeFilter implements Filter {
 			// 3.放行
 			chain.doFilter(request, response);
 			return;
-		} else {
-			Cookie[] cookie = request.getCookies();
-			if (cookie != null) {
-				String name = null;
-				String password = null;
-				for (int i = 0; i < cookie.length; i++) {
-					if (cookie[i].getName().equals("name")) {
-						name = cookie[i].getValue();
-					}
-					if (cookie[i].getName().equals("password")) {
-						password = cookie[i].getValue();
-					}
-				}
-				if (name != null && password != null) {
-					boolean flag = HttpClientUtils.httpPostRequest("http://sso.jwc.whut.edu.cn/Certification/login.do?"
-							+"systemId=&xmlmsg=&userName="+name+"&password="+password+"&type=xs&imageField.x=60&imageField.y=20");
-					if(flag){
-						user = new User();
-						user.setName(name);
-						user.setPassword(password);
-						request.getSession().setAttribute("user", user);
-						chain.doFilter(request, response);
-						return;
-					}
-				}
-			}
-		}
+		} 
 
 		response.sendRedirect(request.getContextPath() + "/pages/login.html");
 
