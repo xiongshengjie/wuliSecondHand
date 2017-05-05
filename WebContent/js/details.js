@@ -59,7 +59,7 @@ function request_cn(t)
 			
 		}
 	});
-	return s	;
+	return s;
 }
 
 
@@ -94,14 +94,8 @@ window.onload=function()
         	alert("复制失败!");
         });
 
-        //电话则直接发送短信
-        var telnum=request_cn("telNum");
-        $("#telNum").click(function()
-        {
-        	
-        	$(this).attr("href","sms:"+telnum);
-        	$(this).click();
-        })
+        
+        
         /*var clipboard_telNum = new Clipboard("#telNum", {
         text: function() {
                 return request_cn("telNum");
@@ -120,7 +114,9 @@ window.onload=function()
         document.getElementById('collection').onclick = function changeImage() 
 		{
             var good_id=sessionStorage.goods_id;
-
+            var srcimg=$("#collection").attr("src");
+            if(srcimg=="../img/noselect.png") //当前是未收藏状态,则执行收藏功能
+            {
 				$.ajax(
 				{
 					type:"GET",
@@ -131,23 +127,37 @@ window.onload=function()
 					success: function(data)
 					{
 						var image = document.getElementById('collection');
-			            if (image.src.match("noselect")) 
-			            {
-			                image.src = "../img/select.png";
-			                alert("收藏成功");
-			            } 
-			            else 
-			            {
-			                image.src = "../img/noselect.png";
-			                alert("取消收藏");
-			            }
-							
+			            image.src = "../img/select.png";
+			            alert("收藏成功");		
 					}
 				});
+			}
+			else  //当前是收藏状态，则执行取消收藏功能
+			{
+				$.ajax(
+				{
+					type:"post",
+					url:"../delCollection",
+					data:{"id":good_id},
+					dataType:"",
+					async:false,
+					success: function(data)
+					{
+						var image = document.getElementById('collection');
+			            image.src = "../img/noselect.png";
+			            alert("取消收藏成功");
+
+							
+					}
+				});				
+			}
         };
 
 		//点击弹出联系方式列表
 		document.getElementById('contact').onclick = function () {
+			//发送短信
+			var telnum=request_cn("telNum");
+			$("#telNum").attr("href","sms:"+telnum+"?body=您好！我是在wuli二手上面看到您的宝贝。");
 			$("#contact-list").fadeIn();
 		};
 
@@ -193,7 +203,7 @@ window.onload=function()
 				if(isColl==1)
 				{
 					var image = document.getElementById('collection');
-						image.src = "../img/select.png";
+					image.src = "../img/select.png";
 				}
 				var imgurl=jsonData.product.imgurlcompress;
 				var img_arr=[];
@@ -222,25 +232,4 @@ window.onload=function()
 				$("body").css("display","block");
 			}
 		});
-		//更新收藏图标
-		/*$.ajax(
-		{
-			type:"GET",
-			url:"../getCollection",
-			dataType:"json",
-			success:function()
-			{
-				var jsonData=xmlhttp.responseText;
-				var data=JSON.parse(jsonData);
-				for(var i=0;i<data.length;i++)
-				{
-					if(data[i].id==good_id)
-					{
-						var image = document.getElementById('collection');
-						image.src = "../img/select.png";
-					}
-				}
-				
-			}
-		})*/
 }
