@@ -114,7 +114,7 @@ public class ProductDao {
 		}
 
 		if (name != null && name.trim().length() > 0) {
-			sql += " and name=?";
+			sql += " and title=?";
 			list.add(name);
 		}
 		if (category != null && category.trim().length() > 0) {

@@ -6,11 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${pageContext.request.contextPath}/admin/css/Style.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="${pageContext.request.contextPath}/admin/js/public.js"></script>
-<script type="text/javascript">
-	function addProduct() {
-		window.location.href = "${pageContext.request.contextPath}/admin/products/add.jsp";
-	}
-</script>
 </HEAD>
 <body>
 	<br>
@@ -39,20 +34,12 @@
 								<td class="ta_01" bgColor="#ffffff"><select name="category"
 									id="category">
 										<option value="" selected="selected">--选择商品类别--</option>
-										<option value="文学">文学</option>
-										<option value="生活">生活</option>
-										<option value="计算机">计算机</option>
-										<option value="外语">外语</option>
-										<option value="经营">经营</option>
-										<option value="励志">励志</option>
-										<option value="社科">社科</option>
-										<option value="学术">学术</option>
-										<option value="少儿">少儿</option>
-										<option value="艺术">艺术</option>
-										<option value="原版">原版</option>
-										<option value="科技">科技</option>
-										<option value="考试">考试</option>
-										<option value="生活百科">生活百科</option>
+										<option value="二手书籍">二手书籍</option>
+										<option value="校园出行">校园出行</option>
+										<option value="运动健身">运动健身</option>
+										<option value="穿搭美妆">穿搭美妆</option>
+										<option value="生活娱乐">生活娱乐</option>
+										<option value="其他">其他</option>
 								</select></td>
 							</tr>
 
@@ -94,13 +81,6 @@
 					</TD>
 				</tr>
 				<tr>
-					<td class="ta_01" align="right">
-						<button type="button" id="add" name="add" value="&#28155;&#21152;"
-							class="button_add" onclick="addProduct()">&#28155;&#21152;
-						</button>
-					</td>
-				</tr>
-				<tr>
 					<td class="ta_01" align="center" bgColor="#f5fafe">
 						<table cellspacing="0" cellpadding="1" rules="all"
 							bordercolor="gray" border="1" id="DataGrid1"
@@ -108,7 +88,6 @@
 							<tr style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #afd1f3">
 								<td align="center" width="24%">商品编号</td>
 								<td align="center" width="18%">商品名称</td>
-								<td align="center" width="18%">商品图片</td>
 								<td align="center" width="9%">商品价格</td>
 								<td width="8%" align="center">商品类别</td>
 								<td align="center" width="24%">商品描述</td>
@@ -122,8 +101,6 @@
 										width="200">${p.id }</td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 										width="18%">${p.title }</td>
-									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-										width="18%"><img src=${p.imgurl } width="50%" height="400%"></td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 										width="8%">${p.price }</td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center">
