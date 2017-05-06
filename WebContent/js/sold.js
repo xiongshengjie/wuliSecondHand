@@ -16,16 +16,6 @@ $("#issue").click(function()
             alert("物品描述未填写！");
             return;
         }
-        if(wechat_length<1)
-        {
-            alert("请填写微信账号！");
-            return;
-        }
-        if(qq_length<1)
-        {
-            alert("请填写qq账号！");
-            return;
-        }
         //两个checbox判断
         var sc_partten="选择校区";
         var ca_partten="选择分类";
@@ -51,11 +41,23 @@ $("#issue").click(function()
         var cell_partten = /^1[3,5,8]\d{9}$/;
         var partten = /^0(([1,2]\d)|([3-9]\d{2}))\d{7,8}$/;
         var phone_num=$("[name='telnum']").val();
-        if(!(cell_partten.test(phone_num)||partten.test(phone_num)))
+        //联系方式至少填写一个
+        if(!(cell_partten.test(phone_num)||partten.test(phone_num)) &&wechat_length<1&&qq_length<1)
         {
-            alert("电话格式不正确!");
+            //alert("电话格式不正确!");
+            alert("联系方式至少填写一个");
             return;
         }
+        /*if(wechat_length<1)
+        {
+            alert("请填写微信账号！");
+            return;
+        }
+        if(qq_length<1)
+        {
+            alert("请填写qq账号！");
+            return;
+        }*/
         //价格判断
         var price_length=$("[name='price']").val().length;
         if(price_length<1)

@@ -25,34 +25,34 @@ function request_cn(t)
 			{
 				var weChatD = jsonData.data.wechat;
 				var qqD = jsonData.data.qq;
-				var telNumD = jsonData.data.telnum;	
+				var telNumD = jsonData.data.telnum;
+				if(weChatD==""||!weChatD)//卖家未填写微信
+				{
+					$("#weChat").css("display","none");
+				}	
+				if(qqD==""||!qqD)//卖家未填写QQ
+				{
+					$("#qq").css("display","none");
+				}
+				if(telNumD==""||!telNumD) //未填写电话
+				{
+					$("#telNum").css("display","none");
+					$("#telCall").css("display","none");
+				}
+				
 				if (t=="weChat") 
 				{
-					if(weChatD==""||!weChatD)
-					{
-						alert("卖家未填写微信,请点击其他联系方式");
-						return "";
-					}
 					alert("已复制到您的粘贴板!");
 					s=weChatD;
 				}
 				if (t == "qq") 
 				{
-					if(qqD==""||!qqD)
-					{
-						alert("卖家未填写QQ,请点击其他联系方式");
-						return "";
-					}
+					
 					alert("已复制到您的粘贴板!");
 					s=qqD;
 				}
 				if (t == "telNum") 
 				{
-					if(telNumD==""||!telNumD)
-					{
-						alert("卖家未填写电话,请点击其他联系方式");
-						return;
-					}
 					s=telNumD;
 				}
 			}
@@ -157,7 +157,28 @@ window.onload=function()
 		document.getElementById('contact').onclick = function () {
 			//发送短信
 			var telnum=request_cn("telNum");
-			$("#telNum").attr("href","sms:"+telnum+"?body=您好！我是在wuli二手上面看到您的宝贝。");
+			if(telnum!="")
+			{
+				var u=navigator.userAgent;
+				var app=navigator.appVersion;
+				var isAndroid=u.indexOf("Android")>-1||u.indexOf("Linux")>-1;
+				var isIos=u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+				if(isAndroid)
+				{
+					$("#telNum").attr("href","sms:"+telnum+"?body=您好！我是在wuli二手上面看到您的宝贝。");
+
+				}
+				else if(isIos)
+				{
+					$("#telNum").attr("href","sms:"+telnum+"&body=您好！我是在wuli二手上面看到您的宝贝。");
+				}
+				else
+				{
+					$("#telNum").attr("href","sms:"+telnum);
+				}
+				$("#telCall").attr("href","tel:"+telnum);
+			}
+			
 			$("#contact-list").fadeIn();
 		};
 
