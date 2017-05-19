@@ -20,10 +20,9 @@
     <url-pattern>/pages/mycollection.html</url-pattern>
     <url-pattern>/pages/mypublishment.html</url-pattern>
     <url-pattern>/pages/personcenter.html</url-pattern>
-    <url-pattern>/pages/pages_sale.html</url-pattern>
-    <url-pattern>/pages/pages_sale02.html</url-pattern>
     <url-pattern>/pages/personalData.html</url-pattern>
     <url-pattern>/pages/sold.html</url-pattern>
+    <url-pattern>/pages/buy.html</url-pattern>
     <url-pattern>/pages/announcement.html</url-pattern>
   </filter-mapping>
   
@@ -36,10 +35,9 @@
     <url-pattern>/pages/mycollection.html</url-pattern>
     <url-pattern>/pages/mypublishment.html</url-pattern>
     <url-pattern>/pages/personcenter.html</url-pattern>
-    <url-pattern>/pages/pages_sale.html</url-pattern>
-    <url-pattern>/pages/pages_sale02.html</url-pattern>
     <url-pattern>/pages/personalData.html</url-pattern>
     <url-pattern>/pages/sold.html</url-pattern>
+    <url-pattern>/pages/buy.html</url-pattern>
     <url-pattern>/pages/announcement.html</url-pattern>
   </filter-mapping>
   
