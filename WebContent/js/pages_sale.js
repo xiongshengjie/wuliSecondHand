@@ -83,29 +83,6 @@ $(window).on("load",function()
 			return;
 		}
 		
-		//压缩图片打到640*480
-		//var file = document.getElementById("uploaderInput_1").files[0];  //获取file input里面的file信息
-		
-		//var tempcanvas=document.getElementById("tempcanvas");
-		/*var tempcontext=tempcanvas.getContext("2d");
-		var img= new Image();
-		var reader = new FileReader();
-		
-		reader.onload=function()   //加载完成后，执行readAsDataURL
-		{
-			var url=reader.result;
-			img.src=url;
-		}
-		reader.readAsDataURL(file);
-		img.onload=function()
-		{
-			tempcontext.drawImage(img, 0, 0, 640, 480);
-		}	  
-		//document.body.appendChild(tempcanvas);
-		tempcanvas.style.position="absolute";
-		tempcanvas.style.top="-9999px";
-		tempcanvas.style.right="40px";
-		tempcanvas.id="tempcanvas";*/
 		
 		var imgURL=document.getElementById("tempcanvas").toDataURL();
 		var imgb64=imgURL.substring(22);

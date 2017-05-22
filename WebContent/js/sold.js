@@ -48,16 +48,6 @@ $("#issue").click(function()
             alert("联系方式至少填写一个");
             return;
         }
-        /*if(wechat_length<1)
-        {
-            alert("请填写微信账号！");
-            return;
-        }
-        if(qq_length<1)
-        {
-            alert("请填写qq账号！");
-            return;
-        }*/
         //价格判断
         var price_length=$("[name='price']").val().length;
         if(price_length<1)

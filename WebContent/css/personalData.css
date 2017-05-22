@@ -62,12 +62,20 @@ ul li{
 	border-bottom: 1px solid #999;
 	overflow: hidden;
 }
-#name{
+.text_input
+{
 	width: 60%;
 	margin-left: 30px;
 	border:none;
 	font-size: 16px;
 	color: #777;
+}
+.hidden_class
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
 }
 select{
 	background: #fff;

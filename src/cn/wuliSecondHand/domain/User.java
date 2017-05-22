@@ -45,12 +45,41 @@ public class User implements Serializable{
 	 */
 	private String classes;
 	/**
-	 * 电话号码
+	 * 年级
 	 */
 	private String grade;
+	/**
+	 * 意向
+	 */
+	private String job_intention;
+	/**
+	 * 意向
+	 */
+	private String ex_jobinfo;
+	/**
+	 * 简历
+	 */
+	private String resume;
 	
 	
-	
+	public String getResume() {
+		return resume;
+	}
+	public void setResume(String resume) {
+		this.resume = resume;
+	}
+	public String getJob_intention() {
+		return job_intention;
+	}
+	public void setJob_intention(String job_intention) {
+		this.job_intention = job_intention;
+	}
+	public String getEx_jobinfo() {
+		return ex_jobinfo;
+	}
+	public void setEx_jobinfo(String ex_jobinfo) {
+		this.ex_jobinfo = ex_jobinfo;
+	}
 	public String getNickname() {
 		return nickname;
 	}

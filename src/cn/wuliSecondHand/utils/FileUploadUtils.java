@@ -43,4 +43,5 @@ public class FileUploadUtils {
 		public static String generateRandonFileNameJpg() {
 			return UUID.randomUUID().toString() + ".jpg";
 		}
+		
 }
