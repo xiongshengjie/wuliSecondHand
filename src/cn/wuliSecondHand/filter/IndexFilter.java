@@ -56,14 +56,10 @@ public class IndexFilter implements Filter {
 				}
 			}
 			if (name != null && password != null) {
-				boolean flag = HttpClientUtils.httpPostRequest("http://sso.jwc.whut.edu.cn/Certification/login.do?"
-						+"systemId=&xmlmsg=&userName="+name+"&password="+password+"&type=xs&imageField.x=60&imageField.y=20");
-				if(flag){
-					User user = new User();
-					user.setName(name);
-					user.setPassword(password);
-					request.getSession().setAttribute("user", user);
-				}
+				User user = new User();
+				user.setName(name);
+				user.setPassword(password);
+				request.getSession().setAttribute("user", user);
 			}
 		}
 		chain.doFilter(request, response);
