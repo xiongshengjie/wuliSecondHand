@@ -38,13 +38,17 @@ window.onload=function()
 					
 				}
 			var name=jsonData.user.nickname;
-			if(name==null){
+			if(name==null)
+			{
 				name = jsonData.user.name.slice(0,7)+"****"+jsonData.user.name.slice(11);
 			}
+			var tel=jsonData.user.tel;
 			var xueyuan=jsonData.user.institute;
 			var grade=jsonData.user.grade;
 			var classes=jsonData.user.classes;
+
 			$("#name").val(name);
+			$("#tel").val(tel);
 			var i=0;
 
 			var xueyuan_op=$("#xueyuan option");
@@ -139,7 +143,7 @@ window.onload=function()
 	arr[21]=new Array("化工工程师","化学实验室技术员/研究员","化学分析","化学技术应用","化学操作","化学制剂研发","塑料工程师","橡胶工程师","配色技术员","化妆品研发","造纸研发","油漆/化工涂料研发","食品/饮料研发/检验","化工项目管理","化学/化工技术总监");
 	
 
-	//
+	//创建select
 	function ext_job(index)
 	{
 		if($("#extra_userinfo>li").length>1)
@@ -183,6 +187,7 @@ window.onload=function()
 	{
 		$("#first_info").css("display","none");
 		$("#second_info").css("display","block");
+		//初始化更多信息填写的html
 		ct.html("");
 		ct.html(ex_html);
 		ext_job(0);//创建默认二层选项
@@ -192,6 +197,14 @@ window.onload=function()
 		resume_file.change(function()
 		{
 			change_lable(this);
+		});
+		$("#job_intention").change(function()
+		{
+			var index=$("#job_intention")[0].selectedIndex;
+			ext_job(index);
+			var resume_ct=$("<li>").appendTo(ct);
+			$("<label>").attr("for","resume").text("*上传简历").appendTo(resume_ct);
+			$("<input>").attr("type","file").attr("name","resume").attr("id","resume").addClass("hidden_class").appendTo(resume_ct);
 		});
 	});
 		//点击上一页按钮
@@ -203,12 +216,5 @@ window.onload=function()
 	});
 	
         //动态改变
-	$("#job_intention").change(function()
-	{
-		var index=$("#job_intention")[0].selectedIndex;
-		ext_job(index);
-		var resume_ct=$("<li>").appendTo(ct);
-		$("<label>").attr("for","resume").text("*上传简历").appendTo(resume_ct);
-		$("<input>").attr("type","file").attr("name","resume").attr("id","resume").addClass("hidden_class").appendTo(resume_ct);
-	});
+	
 }

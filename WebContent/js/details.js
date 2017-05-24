@@ -60,13 +60,17 @@ function request_cn(t)
 		}
 	});
 	return s;
+};
+//点击图片，弹出未压缩图片
+function show_img(img)
+{
+	$(".modal-body>img").attr("src","..//"+img);
 }
-
 
 window.onload=function()
 {
 	//给联系方式的按钮添加clipboard属性
-	//QQ
+	    //QQ
 	    var clipboard_qq = new Clipboard("#qq", {
         text: function() {
                 return request_cn("qq") ;
@@ -94,20 +98,6 @@ window.onload=function()
         	alert("复制失败!");
         });
 
-        
-        
-        /*var clipboard_telNum = new Clipboard("#telNum", {
-        text: function() {
-                return request_cn("telNum");
-            }
-        });
-
-        clipboard_telNum.on('success', function() {
-        });
-
-        clipboard_telNum.on('error', function() {
-        	alert("复制失败!");
-        });*/
 
 
 		//点击添加或取消收藏
@@ -226,9 +216,14 @@ window.onload=function()
 					var image = document.getElementById('collection');
 					image.src = "../img/select.png";
 				}
+				var nol_imgurl=jsonData.product.imgurl;
+				alert(nol_imgurl);
+				var nol_img_arr=[];
+				nol_img_arr=nol_imgurl.split("|");//取出多张原图片
+				alert(nol_img_arr[0]);
 				var imgurl=jsonData.product.imgurlcompress;
 				var img_arr=[];
-				img_arr=imgurl.split("|");//取出多张图片
+				img_arr=imgurl.split("|");//取出多张压缩后的图片
 
 				var schoolarea=jsonData.product.schoolarea;
 				var description=jsonData.product.description;
@@ -240,10 +235,14 @@ window.onload=function()
 				$(".first-box .price").text(price);
 				
 				$(".second-box .goods-name").text(goods_name);
-				//添加多张图片
+				//添加多张图片,并为每张相片绑定 显示详细相片 函数
 				for(var i=0;i<img_arr.length-1;i++)
 				{
-					var imgTag=$("<img>").addClass("product img-responsive").attr("src","..//"+img_arr[i]).insertAfter($(".second-box>.goods-name"));
+					var imgTag=$("<img>").addClass("product img-responsive").attr("src","..//"+img_arr[i]).attr("data-toggle","modal").attr("data-target","nolimg").insertAfter($(".second-box>.goods-name"));
+					imgTag.click(function(){
+						alert(nol_img_arr[0]);
+						show_img(nol_img_arr[i]);
+						});
 					$(imgTag).width($(window).width()*0.8);
 				}
 				
