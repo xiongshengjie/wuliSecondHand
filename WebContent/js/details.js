@@ -61,11 +61,6 @@ function request_cn(t)
 	});
 	return s;
 };
-//点击图片，弹出未压缩图片
-function show_img(img)
-{
-	$(".modal-body>img").attr("src","..//"+img);
-}
 
 window.onload=function()
 {
@@ -217,10 +212,8 @@ window.onload=function()
 					image.src = "../img/select.png";
 				}
 				var nol_imgurl=jsonData.product.imgurl;
-				alert(nol_imgurl);
 				var nol_img_arr=[];
 				nol_img_arr=nol_imgurl.split("|");//取出多张原图片
-				alert(nol_img_arr[0]);
 				var imgurl=jsonData.product.imgurlcompress;
 				var img_arr=[];
 				img_arr=imgurl.split("|");//取出多张压缩后的图片
@@ -238,11 +231,9 @@ window.onload=function()
 				//添加多张图片,并为每张相片绑定 显示详细相片 函数
 				for(var i=0;i<img_arr.length-1;i++)
 				{
-					var imgTag=$("<img>").addClass("product img-responsive").attr("src","..//"+img_arr[i]).attr("data-toggle","modal").attr("data-target","nolimg").insertAfter($(".second-box>.goods-name"));
-					imgTag.click(function(){
-						alert(nol_img_arr[0]);
-						show_img(nol_img_arr[i]);
-						});
+					var imgTag=$("<img>").addClass("product img-responsive").attr("src","..//"+img_arr[i]).attr("data-toggle","modal").attr("data-target","#nolimg"+i).insertAfter($(".second-box>.goods-name"));
+					var showhtml='<div class="modal fade" id="nolimg'+i+'" tabindex="-1" role="dialog" aria-labelledby="nolimg" aria-hidden="true"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-body"><img class="img-responsive" src="../'+nol_img_arr[i]+'" alt="高清图片"></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div>';
+					$("body").append(showhtml);
 					$(imgTag).width($(window).width()*0.8);
 				}
 				

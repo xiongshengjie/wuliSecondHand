@@ -17,7 +17,9 @@ window.onload=function()
 		}
 		input.value = hide(input.value);
 	})();
-
+	var job_intentiontext="";//工作大类
+	var ex_jobinfotext="";//工作小类
+	var resumetext="";//工作简历
 	//$("body").css("display","block");
 	//获取用户的信息
 	$.ajax(
@@ -42,10 +44,13 @@ window.onload=function()
 			{
 				name = jsonData.user.name.slice(0,7)+"****"+jsonData.user.name.slice(11);
 			}
-			var tel=jsonData.user.tel;
+			var tel=jsonData.user.telnum;
 			var xueyuan=jsonData.user.institute;
 			var grade=jsonData.user.grade;
 			var classes=jsonData.user.classes;
+			job_intentiontext=jsonData.user.job_intention;
+			ex_jobinfotext=jsonData.user.ex_jobinfo;
+			resumetext=jsonData.user.resume;
 
 			$("#name").val(name);
 			$("#tel").val(tel);
@@ -91,7 +96,7 @@ window.onload=function()
 		}
 	});
 
-    var ex_html='<li><span>求职意向</span><select id="job_intention" name="job_intention" style="margin-left: 25px;"><option>人力/行政/管理</option><option>市场/媒介/公关</option><option>广告/会展/咨询</option><option>美术/设计/创意</option><option>生产管理/研发</option><option>物流/仓储</option><option>质控/安防 </option><option>汽车制造/服务</option><option>计算机/互联网/通信</option><option>电子/电气</option><option>机械/仪器仪表</option><option>法律</option><option>翻译</option><option>编辑/出版/印刷</option><option>财务/审计/统计</option><option>制药/生物工程</option><option>环保</option><option>建筑</option><option>软件/互联网开发</option><option>互联网产品/运营管理</option><option>IT运维与测试</option><option>化工</option></select></li>';
+    var ex_html='<li><span>求职意向</span><select id="job_intention" name="job_intention" style="margin-left: 25px;"><option>人力/行政/管理</option><option>市场/媒介/公关</option><option>广告/会展/咨询</option><option>美术/设计/创意</option><option>生产管理/研发</option><option>物流/仓储</option><option>质控/安防</option><option>汽车制造/服务</option><option>计算机/互联网/通信</option><option>电子/电气</option><option>机械/仪器仪表</option><option>法律</option><option>翻译</option><option>编辑/出版/印刷</option><option>财务/审计/统计</option><option>制药/生物工程</option><option>环保</option><option>建筑</option><option>软件/互联网开发</option><option>互联网产品/运营管理</option><option>IT运维与测试</option><option>化工</option></select></li>';
 
 
 	var i=0;
@@ -143,7 +148,7 @@ window.onload=function()
 	arr[21]=new Array("化工工程师","化学实验室技术员/研究员","化学分析","化学技术应用","化学操作","化学制剂研发","塑料工程师","橡胶工程师","配色技术员","化妆品研发","造纸研发","油漆/化工涂料研发","食品/饮料研发/检验","化工项目管理","化学/化工技术总监");
 	
 
-	//创建select
+	//创建工作小类select
 	function ext_job(index)
 	{
 		if($("#extra_userinfo>li").length>1)
@@ -174,7 +179,7 @@ window.onload=function()
 		if(ftype!="doc"&&ftype!="docx"&&ftype!="pdf")
 		{
 			alert("简历文件格式仅限于doc,docx,pdf");
-			$("resume").val("");
+			$("#resume").val("");
 			return;
 		}
 		$("#forresume").text(filename);
@@ -185,15 +190,44 @@ window.onload=function()
 	   //点击更多按钮
 	$("#moreinfo").click(function()
 	{
-		$("#first_info").css("display","none");
-		$("#second_info").css("display","block");
 		//初始化更多信息填写的html
 		ct.html("");
 		ct.html(ex_html);
-		ext_job(0);//创建默认二层选项
+		if(job_intentiontext!=""&&job_intentiontext!="null")//用户已经填过完善的信息
+		{
+			//根据job_intention ex_jobinfo resume来创建
+			var option=$("#job_intention option");//获取所有工作大类的option
+			for(var i=0;i<22;i++)
+			{
+				if($(option[i]).text()==job_intentiontext)//找到工作大类
+				{
+					$($("#job_intention option")[i]).attr("selected","true");//将工作大类设置正确
+					ext_job(i);//更新工作小类
+					var se_option=$("#ex_jobinfo option");//获取所有的工作小类option
+					//将小类默认值设置正确
+					for(var k=0;k<arr[i].length;k++)
+					{
+						if($(se_option[k]).text()==ex_jobinfotext)//找到工作小类
+						{
+							$($("#ex_jobinfo option")[k]).attr("selected","true");
+							
+						}
+					}
+				}
+			}
+		}
+		else
+		{
+			ext_job(0);//创建默认二层选项
+		}
+		
 		var resume_ct=$("<li>").css("position","relative").appendTo(ct);
 		$("<label>").attr("id","forresume").attr("for","resume").text("*上传简历").appendTo(resume_ct);
 		var resume_file=$("<input>").attr("type","file").attr("name","resume").attr("id","resume").addClass("hidden_class").appendTo(resume_ct);
+		if(resumetext!=""&&resumetext!="null")
+		{
+			$("#forresume").text("您已上传简历，点击可重新上传");
+		}
 		resume_file.change(function()
 		{
 			change_lable(this);
@@ -206,6 +240,8 @@ window.onload=function()
 			$("<label>").attr("for","resume").text("*上传简历").appendTo(resume_ct);
 			$("<input>").attr("type","file").attr("name","resume").attr("id","resume").addClass("hidden_class").appendTo(resume_ct);
 		});
+		$("#first_info").css("display","none");
+		$("#second_info").css("display","block");
 	});
 		//点击上一页按钮
 	$("#backpre").click(function()
