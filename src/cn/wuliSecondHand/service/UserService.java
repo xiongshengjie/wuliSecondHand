@@ -2,8 +2,6 @@ package cn.wuliSecondHand.service;
 
 import java.sql.SQLException;
 
-import com.caucho.quercus.annotation.ReturnNullAsFalse;
-
 import cn.wuliSecondHand.dao.UserDao;
 import cn.wuliSecondHand.domain.User;
 

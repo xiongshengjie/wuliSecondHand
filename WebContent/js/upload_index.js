@@ -32,8 +32,14 @@ function createObj(imgurl,price,title,flag,id)  //flag用来判断a 标签应该
 	{
 		var Tag_a=$('<a>').addClass("goods-list main-left col-xs-6 zero_a").appendTo($main_sale);
 	}
-	var Tag_img=$('<img>').addClass("center-block img_size").appendTo($(Tag_a)); //创建图片
-	Tag_img.attr('src',imgurl);
+
+	/*var Tag_img=$('<img>').addClass("center-block img_size").appendTo($(Tag_a)); //创建图片
+	Tag_img.attr('src',imgurl);*/
+
+	var Tag_imgdiv=$('<div>').addClass('center-block img_size').appendTo($(Tag_a));
+	Tag_imgdiv.css('background','url('+imgurl+') center no-repeat');
+	Tag_imgdiv.css('background-size','cover');
+
 	var Tag_ul=$('<ul>').addClass("goods-detial").appendTo($(Tag_a));
 	var Tag_li_name=$('<li>').addClass("goods-name").appendTo($(Tag_ul));
 	var Tag_li_id=$('<li>').addClass("goods-id").appendTo($(Tag_ul));
@@ -57,8 +63,12 @@ function createObj_buy(imgurl,price,title,flag,id)  //flag用来判断a 标签�
 		var Tag_a=$('<a>').addClass("goods-list main-left col-xs-6 zero_a").appendTo($main_buy);
 	}
 	//当中价格内容的操作可能需要改变
-	var Tag_img=$('<img>').addClass("center-block img_size").appendTo($(Tag_a)); //创建图片
-	Tag_img.attr('src',imgurl);
+	/*var Tag_img=$('<img>').addClass("center-block img_size").appendTo($(Tag_a)); //创建图片
+	Tag_img.attr('src',imgurl);*/
+	var Tag_imgdiv=$('<div>').addClass('center-block img_size').appendTo($(Tag_a));
+	Tag_imgdiv.css('background','url('+imgurl+') center no-repeat');
+	Tag_imgdiv.css('background-size','cover');
+
 	var Tag_ul=$('<ul>').addClass("goods-detial").appendTo($(Tag_a));
 	var Tag_li_name=$('<li>').addClass("goods-name").appendTo($(Tag_ul));
 	var Tag_li_id=$('<li>').addClass("goods-id").appendTo($(Tag_ul));

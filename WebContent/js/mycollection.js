@@ -85,9 +85,14 @@ window.onload=function()
 		var $main=$(".main");
 		var Tag_div=$("<div>").addClass("good").appendTo($main); //加入 main中
 		$(Tag_div).attr("id",id);
-		var Tag_img=$("<img>").addClass("good-pic").appendTo($(Tag_div));
-		Tag_img.attr("src",'../'+imgurl);
-		$(Tag_img).click(function()
+		/*var Tag_img=$("<img>").addClass("good-pic").appendTo($(Tag_div));
+		Tag_img.attr("src",'../'+imgurl);*/
+
+		var Tag_imgdiv=$('<div>').addClass('good-pic').appendTo($(Tag_div));
+		Tag_imgdiv.css('background','url(../'+imgurl+') center no-repeat');
+		Tag_imgdiv.css('background-size','cover');
+
+		$(Tag_imgdiv).click(function()
 		{
 			var goods_id=$(this).parent().attr("id");
 			sessionStorage.goods_id=goods_id;
