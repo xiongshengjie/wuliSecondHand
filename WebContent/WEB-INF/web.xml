@@ -9,7 +9,6 @@
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
   <filter>
     <filter-name>indexFilter</filter-name>
     <filter-class>cn.wuliSecondHand.filter.IndexFilter</filter-class>
@@ -25,7 +24,6 @@
     <url-pattern>/pages/buy.html</url-pattern>
     <url-pattern>/pages/announcement.html</url-pattern>
   </filter-mapping>
-  
   <filter>
     <filter-name>adminPrivilegeFilter</filter-name>
     <filter-class>cn.wuliSecondHand.filter.AdminPrivilegeFilter</filter-class>
@@ -40,8 +38,6 @@
     <url-pattern>/pages/buy.html</url-pattern>
     <url-pattern>/pages/announcement.html</url-pattern>
   </filter-mapping>
-  
-  
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>cn.wuliSecondHand.servlet.LoginServlet</servlet-class>
@@ -185,7 +181,7 @@
   <servlet-mapping>
     <servlet-name>FindUserServlet</servlet-name>
     <url-pattern>/findUser</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping>  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
